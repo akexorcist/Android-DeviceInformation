@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.pnikosis.materialishprogress.ProgressWheel
+        android:id="@+id/progress_wheel"
+        android:layout_width="@dimen/global_progress_loading_size"
+        android:layout_height="@dimen/global_progress_loading_size"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        app:matProg_barColor="@color/red"
+        app:matProg_progressIndeterminate="true" />
+
+    <LinearLayout
+        android:id="@+id/layout_content"
+        android:layout_width="@dimen/blank_message_box_fullscreen"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/global_margin_padding_large"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/blank_oops"
+            android:textColor="@color/dark_gray"
+            android:textSize="@dimen/global_text_size_extra_large"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/blank_unsupported"
+            android:textColor="@color/dark_gray"
+            android:textSize="@dimen/global_text_size" />
+    </LinearLayout>
+</RelativeLayout>

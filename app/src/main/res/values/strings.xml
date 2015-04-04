@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Dev Device Info</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="sample">Sample</string>
+    <string name="ok">OK</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="loading">Loading...</string>
+
+    <string name="welcome_if_you_are">If you are</string>
+    <string name="welcome_developer">Developer</string>
+    <string name="welcome_user">User</string>
+    <string name="welcome_for_user">This app is used for collect information of android devices for application development. You can help us by send your device information via this app. The collected device information is for development only. We promise we will not retain your private information.</string>
+    <string name="welcome_for_dev">This app will help you to collect android devices information for application development. We have information of real android devices, such as camera parameter, screen, sensor. You can get all android device information on our server to show on this app. And we have open source code of this app on GitHub. We hope this app will help you to build a great app. </string>
+    
+    <string name="menu_choose">Choose Information</string>
+    <string name="menu_back_your_device">Back To Your Device</string>
+    <string name="menu_change_device">Device Switcher</string>
+    <string name="menu_submit">Submit Your Device Info</string>
+    <string name="menu_hardware">Hardware &amp; Software</string>
+    <string name="menu_sensor">Sensor</string>
+    <string name="menu_screen">Screen</string>
+    <string name="menu_camera">Camera</string>
+    <string name="menu_camera2">Camera 2</string>
+    <string name="menu_features">Feature</string>
+    <string name="menu_applist">App List</string>
+    <string name="menu_exit">Exit</string>
+
+    <string name="menu_your_device">(Your Device)</string>
+    <string name="menu_other_device">(Other Device)</string>
+    <string name="menu_unknown_device">Unknown</string>
+    
+    <string name="camera_camera_id">Camera ID</string>
+    <string name="camera_antibanding">Antibanding</string>
+    <string name="camera_shutter_sound">Can Disable Shutter Sound</string>
+    <string name="camera_color_effect">Color Effect</string>
+    <string name="camera_facing">Facing</string>
+    <string name="camera_flash_mode">Flash Mode</string>
+    <string name="camera_focus_mode">Focus Mode</string>
+    <string name="camera_jpeg_thumbnail">JPEG Thumbnail Size (px)</string>
+    <string name="camera_image_orientation">Image orientation</string>
+    <string name="camera_picture_format">Picture Format</string>
+    <string name="camera_preview_format">Preview Format</string>
+    <string name="camera_preview_framerate">Preview Frame Rate (fps)</string>
+    <string name="camera_picture_size">Picture Size (px)</string>
+    <string name="camera_preview_size">Preview Size (px)</string>
+    <string name="camera_preview_frame_range">Preview FPS Range (fps)</string>
+    <string name="camera_scene_mode">Scene Mode</string>
+    <string name="camera_video_quality">Video Quality Profile (px)</string>
+    <string name="camera_timelapse_quality">Time Lapse Quality Profile (px)</string>
+    <string name="camera_highspeed_quality">High Speed Quality Profile (PX)</string>
+    <string name="camera_video_size">Video Size (px)</string>
+    <string name="camera_white_balance">White Balance</string>
+    <string name="camera_auto_exposure_lock">Auto Exposure Lock Supported</string>
+    <string name="camera_auto_white_balance_lock">Auto White Balance Lock Supported</string>
+    <string name="camera_auto_smooth_zoom">Smooth Zoom Supported</string>
+    <string name="camera_video_snapshot">Video Snapshot Supported</string>
+    <string name="camera_video_stabilization">Video Stabilization Supported</string>
+    <string name="camera_zoom">Zoom Supported</string>
+
+    <string name="camera2_camera_id">Camera ID</string>
+    <string name="camera2_active_array_size">Active Array Size</string>
+    <string name="camera2_ae_compensation_range">AE Compensation Range</string>
+    <string name="camera2_ae_compensation_step">AE Compensation Step</string>
+    <string name="camera2_available_ae_antibanding_mode">Available AE Antibanding Mode</string>
+    <string name="camera2_available_ae_mode">Available AE Mode</string>
+    <string name="camera2_available_af_mode">Available AF Mode</string>
+    <string name="camera2_available_ar_target_fps_range">Available AE Target FPS Range</string>
+    <string name="camera2_available_aperture">Available Aperture</string>
+    <string name="camera2_available_awb_mode">Available AWB Mode</string>
+    <string name="camera2_available_edge_mode">Available Edge Mode</string>
+    <string name="camera2_available_effect">Available Effect</string>
+    <string name="camera2_available_face_detect_mode">Available Face Detect Mode</string>
+    <string name="camera2_available_available_filter_density">Available Filter Density</string>
+    <string name="camera2_available_flash">Available Flash</string>
+    <string name="camera2_available_focal_length">Available Focal Length</string>
+    <string name="camera2_available_hot_pixel_map_mode">Available Hot Pixel Map Mode</string>
+    <string name="camera2_available_hot_pixel_mode">Available Hot Pixel Mode</string>
+    <string name="camera2_available_jpeg_thumbnail_size">Available JPEG Thumbnail Size</string>
+    <string name="camera2_available_noise_reduction_mode">Available Noise Reduction Mode</string>
+    <string name="camera2_available_optical_stabilization">Available Optical Stabilization</string>
+    <string name="camera2_available_request_capability">Available Request Capability</string>
+    <string name="camera2_available_scene_mode">Available Scene Mode</string>
+    <string name="camera2_available_test_pattern_mode">Available Test Pattern Mode</string>
+    <string name="camera2_available_tone_map_mode">Available Tone Map Mode</string>
+    <string name="camera2_available_video_stabilization_mode">Available Video Stabilization Mode</string>
+    <string name="camera2_color_filter_arrangement">Color Filter Arrangement</string>
+    <string name="camera2_exposure_time_range">Exposure Time Range</string>
+    <string name="camera2_focus_distance_calibration">Focus Distance Calibration</string>
+    <string name="camera2_hyper_focal_distance_supported">Hyper Focal Distance Supported</string>
+    <string name="camera2_lens_facing">Lens Facing</string>
+    <string name="camera2_max_analog_sensitivity">Max Analog Sensitivity</string>
+    <string name="camera2_max_face_count">Max Face Count</string>
+    <string name="camera2_max_frame_duration">Max Frame Duration</string>
+    <string name="camera2_max_number_output_proc">Max Number Output Proc</string>
+    <string name="camera2_max_number_output_proc_stall">Max Number Output Proc Stall</string>
+    <string name="camera2_max_number_output_raw">Max Number Output RAW</string>
+    <string name="camera2_max_region_ae">Max Region AE</string>
+    <string name="camera2_max_region_awb">Max Region AWB</string>
+    <string name="camera2_minimum_focus_distance">Minimum Focus Distance</string>
+    <string name="camera2_partial_result_count">Partial Result Count</string>
+    <string name="camera2_physical_size">Physical Size</string>
+    <string name="camera2_pipeline_max_depth">Pipeline Max Depth</string>
+    <string name="camera2_pixel_array_size">Pixel Array Size</string>
+    <string name="camera2_reference_illuminant_1">Reference Illuminant 1</string>
+    <string name="camera2_reference_illuminant_2">Reference Illuminant 2</string>
+    <string name="camera2_scale_scropping_type">Scale Cropping Type</string>
+    <string name="camera2_sensitivity_range">Sensitivity Range</string>
+    <string name="camera2_sensor_orientation">Sensor Orientation</string>
+    <string name="camera2_color_correction_aberration_mode">Color Correction Aberration Mode</string>
+    <string name="camera2_support_hardware_level">Support Hardware Level</string>
+    <string name="camera2_highspeed_video_fps_range">High Speed Video FPS Range</string>
+    <string name="camera2_highspeed_video_size">High Speed Video Size</string>
+    <string name="camera2_support_image_format">Support Image Format</string>
+    <string name="camera2_support_output_size">Support Output Size</string>
+    <string name="camera2_sync_max_latency">Sync Max Latency</string>
+    <string name="camera2_timestamp_source">Timestamp Source</string>
+    <string name="camera2_tone_map_max_curve_point">Tone Map Max Curve Point</string>
+    <string name="camera2_white_level">White Level</string>
+    
+    <string name="sensor_vendor">Vendor</string>
+    <string name="sensor_type">Type</string>
+    <string name="sensor_version">Version</string>
+    <string name="sensor_power">Power</string>
+    <string name="sensor_max_range">Max Range</string>
+    <string name="sensor_resolution">Resolution</string>
+    <string name="sensor_min_delay">Min Delay</string>
+    <string name="sensor_max_delay">Max Delay</string>
+    <string name="sensor_fifo_reserved">FIFO Reserved Event</string>
+    <string name="sensor_fifo_max">FIFO Max Event</string>
+    
+    <string name="screen_resolution">Resolution (PX)</string>
+    <string name="screen_resolution_dp">Resolution (DP)</string>
+    <string name="screen_dpi_x">DPI (X)</string>
+    <string name="screen_dpi_y">DPI (Y)</string>
+    <string name="screen_dpi">DPI</string>
+    <string name="screen_size">Size</string>
+    <string name="screen_density">Density</string>
+    <string name="screen_multitouch">Multitouch</string>
+    <string name="screen_screen_measurement">Screen Measurement</string>
+    
+    <string name="screen_1280">1280 dp</string>
+    <string name="screen_1232">1232 dp</string>
+    <string name="screen_1024">1024 dp</string>
+    <string name="screen_976">976 dp</string>
+    <string name="screen_960">960 dp</string>
+    <string name="screen_800">800 dp</string>
+    <string name="screen_768">768 dp</string>
+    <string name="screen_720">720 dp</string>
+    <string name="screen_640">640 dp</string>
+    <string name="screen_600">600 dp</string>
+    <string name="screen_540">540 dp</string>
+    <string name="screen_480">480 dp</string>
+    <string name="screen_400">400 dp</string>
+    <string name="screen_360">360 dp</string>
+    <string name="screen_320">320 dp</string>
+    <string name="screen_280">280 dp</string>
+    <string name="screen_240">240 dp</string>
+    <string name="screen_160">160 dp</string>
+
+    <string name="hardware_build_info">Build Information</string>
+    <string name="hardware_os_info">Android Information</string>
+    <string name="hardware_cpu_info">CPU Information</string>
+    <string name="hardware_gpu_info">GPU Information</string>
+    <string name="hardware_ram_info">Memory Information</string>
+    <string name="hardware_rom_info">Storage Information</string>
+    <string name="hardware_connection_info">Connection Information</string>
+    <string name="hardware_info_unavailable">This information is unavailable</string>
+
+    <string name="feature_title_supported">Supported</string>
+    <string name="feature_title_unsupported">Unsupported</string>
+    <string name="feature_api_level">API Level</string>
+
+    <string name="app_title_download">Downloaded</string>
+    <string name="app_title_system">System</string>
+    <string name="app_package">Package</string>
+    <string name="app_version_name">Version Name</string>
+    <string name="app_version_code">Version Code</string>
+    <string name="app_permission">Permission</string>
+
+    <string name="switcher_loading">Loading</string>
+    <string name="switcher_name">Name</string>
+    <string name="switcher_brand">Brand</string>
+    <string name="switcher_model">Model</string>
+    <string name="switcher_version">Version</string>
+    <string name="switcher_fingerprint">Fingerprint</string>
+    <string name="switcher_confirm">Confirm switcher</string>
+    <string name="switcher_choose_device">Choose Device</string>
+    <string name="switcher_choose_brand">Choose Brand</string>
+    <string name="switcher_pull_down">Pull down to refresh</string>
+    <string name="switcher_choose_sub_device">Choose Sub Device</string>
+
+    <string name="submit_connection_available">Connection Available</string>
+    <string name="submit_check_new_device">New Device</string>
+    <string name="submit_collect_device_info">Collect Device Info</string>
+    <string name="submit_send_device_info">Send Device Info</string>
+    <string name="submit_finish">Finish!</string>
+
+    <string name="unknown">Unknown</string>
+
+    <string name="blank_oops">Oops!</string>
+    <string name="blank_unsupported">Sorry, your device isn\'t supported this information</string>
+
+    <string name="snack_duplicated_info">Duplicated Information</string>
+    <string name="snack_cant_send_info">Can\'t Send Information</string>
+
+
+
+</resources>

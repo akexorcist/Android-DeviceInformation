@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Global -->
+    <dimen name="global_text_size_small">16sp</dimen>
+    <dimen name="global_text_size">20sp</dimen>
+    <dimen name="global_text_size_large">26sp</dimen>
+    <dimen name="global_text_size_extra_large">45sp</dimen>
+
+    <dimen name="global_margin_padding_small">10dp</dimen>
+    <dimen name="global_margin_padding">18dp</dimen>
+    <dimen name="global_margin_padding_large">36dp</dimen>
+
+    <dimen name="global_corner_radius">400dp</dimen>
+    <dimen name="global_progress_loading_size">160dp</dimen>
+    <dimen name="global_divider_size">1dp</dimen>
+    <dimen name="global_card_detail_width">600dp</dimen>
+    <dimen name="global_dialog_width">560dp</dimen>
+    <dimen name="global_card_view_corner">10dp</dimen>
+
+    <!-- Splash Screen -->
+    <dimen name="splash_logo_size">200dp</dimen>
+
+    <!-- Menu -->
+    <dimen name="menu_image_size">60dp</dimen>
+    <dimen name="menu_image_device_size">120dp</dimen>
+    <dimen name="navigation_drawer_width">420dp</dimen>
+
+    <!-- Welcome -->
+    <dimen name="welcome_text_header_size">44sp</dimen>
+    <dimen name="welcome_text_app_name_size">28sp</dimen>
+
+    <!-- Submit -->
+    <dimen name="submit_finish_button_size">40dp</dimen>
+    <dimen name="submit_circular_progress_button_size">120dp</dimen>
+
+    <!-- Hardware -->
+    <dimen name="hardware_card_title_width">120dp</dimen>
+
+    <!-- Sensor -->
+    <dimen name="sensor_card_title_width">180dp</dimen>
+
+    <!-- Camera -->
+    <dimen name="camera_card_title_width">150dp</dimen>
+
+    <!-- App -->
+    <dimen name="app_icon_size">72dp</dimen>
+    <dimen name="app_header_width">100dp</dimen>
+
+    <!-- Switcher -->
+    <dimen name="switcher_brand_loading_size">80dp</dimen>
+    <dimen name="switcher_brand_height">200dp</dimen>
+    <dimen name="switcher_back_button_size">48dp</dimen>
+    <dimen name="switcher_brand_next_icon_size">30dp</dimen>
+    <dimen name="switcher_common_button_size">80dp</dimen>
+    <dimen name="switcher_refresh_button_size">120dp</dimen>
+    <dimen name="switcher_progress_bar_size">40dp</dimen>
+    <dimen name="switcher_image_pull_down_size">90dp</dimen>
+
+    <!-- ViewPager Form -->
+    <dimen name="pager_tab_height">64dp</dimen>
+    <dimen name="pager_indicator_height">5dp</dimen>
+
+    <!-- Screen -->
+    <dimen name="screen_card_title_width">160dp</dimen>
+    <dimen name="screen_measure_sub_size">13dp</dimen>
+    <dimen name="screen_measure_size">25dp</dimen>
+    <dimen name="screen_measure_margin">3dp</dimen>
+
+    <!-- Blank Fragment -->
+    <dimen name="blank_message_box_fullscreen">600dp</dimen>
+
+</resources>

@@ -1,0 +1,172 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="@dimen/global_margin_padding_large">
+
+    <com.pnikosis.materialishprogress.ProgressWheel
+        android:id="@+id/progress_wheel"
+        android:layout_width="@dimen/global_progress_loading_size"
+        android:layout_height="@dimen/global_progress_loading_size"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        app:matProg_barColor="@color/red"
+        app:matProg_progressIndeterminate="true" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|center_vertical"
+        android:orientation="horizontal">
+
+        <com.dd.CircularProgressButton
+            android:id="@+id/btn_submit_info"
+            android:layout_width="@dimen/submit_circular_progress_button_size"
+            android:layout_height="@dimen/submit_circular_progress_button_size"
+            android:layout_marginBottom="@dimen/global_margin_padding_large"
+            android:layout_marginRight="@dimen/global_margin_padding_large"
+            android:layout_marginTop="@dimen/global_margin_padding_large"
+            android:textColor="@color/white"
+            android:textSize="@dimen/global_text_size"
+            app:cpb_cornerRadius="@dimen/global_corner_radius"
+            app:cpb_iconComplete="@drawable/menu_icon_app"
+            app:cpb_iconError="@drawable/menu_icon_feature"
+            app:cpb_selectorComplete="@drawable/selector_green"
+            app:cpb_selectorError="@drawable/selector_yellow"
+            app:cpb_selectorIdle="@drawable/selector_box_red"
+            app:cpb_textIdle="Send" />
+
+        <LinearLayout
+            android:id="@+id/layout_submit_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            android:touchscreenBlocksFocus="true"
+            android:layout_marginLeft="@dimen/global_margin_padding_large"
+            android:layout_marginRight="@dimen/global_margin_padding_large">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <app.akeorcist.deviceinformation.view.FinishButton
+                    android:id="@+id/iv_connection_available"
+                    android:layout_width="@dimen/submit_finish_button_size"
+                    android:layout_height="@dimen/submit_finish_button_size"
+                    android:layout_margin="@dimen/global_margin_padding_small"
+                    android:background="@drawable/shape_oval_light_gray"
+                    android:scaleType="fitCenter" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Connection Available"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/global_text_size" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <app.akeorcist.deviceinformation.view.FinishButton
+                    android:id="@+id/iv_device_existing"
+                    android:layout_width="@dimen/submit_finish_button_size"
+                    android:layout_height="@dimen/submit_finish_button_size"
+                    android:layout_margin="@dimen/global_margin_padding_small"
+                    android:background="@drawable/shape_oval_light_gray"
+                    android:scaleType="fitCenter" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Check new device"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/global_text_size" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <app.akeorcist.deviceinformation.view.FinishButton
+                    android:id="@+id/iv_collect_device_info"
+                    android:layout_width="@dimen/submit_finish_button_size"
+                    android:layout_height="@dimen/submit_finish_button_size"
+                    android:layout_margin="@dimen/global_margin_padding_small"
+                    android:background="@drawable/shape_oval_light_gray"
+                    android:scaleType="fitCenter" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Collect Device Info"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/global_text_size" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <app.akeorcist.deviceinformation.view.FinishButton
+                    android:id="@+id/iv_send_device_info"
+                    android:layout_width="@dimen/submit_finish_button_size"
+                    android:layout_height="@dimen/submit_finish_button_size"
+                    android:layout_margin="@dimen/global_margin_padding_small"
+                    android:background="@drawable/shape_oval_light_gray"
+                    android:scaleType="fitCenter" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Send Device Info"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/global_text_size" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <app.akeorcist.deviceinformation.view.FinishButton
+                    android:id="@+id/iv_finish"
+                    android:layout_width="@dimen/submit_finish_button_size"
+                    android:layout_height="@dimen/submit_finish_button_size"
+                    android:layout_margin="@dimen/global_margin_padding_small"
+                    android:background="@drawable/shape_oval_light_gray"
+                    android:scaleType="fitCenter" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Finish!"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/global_text_size" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

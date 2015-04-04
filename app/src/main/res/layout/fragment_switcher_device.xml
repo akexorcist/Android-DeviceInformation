@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout_pull_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/switcher_image_pull_down_size"
+            android:layout_height="@dimen/switcher_image_pull_down_size"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_pulldown" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/switcher_pull_down"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/global_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_blue"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btn_device_back"
+                android:layout_width="@dimen/switcher_back_button_size"
+                android:layout_height="@dimen/switcher_back_button_size"
+                android:background="@drawable/selector_box_transparent"
+                android:src="@drawable/ic_prev" />
+
+            <TextView
+                android:id="@+id/tv_chooser_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/global_margin_padding"
+                android:paddingRight="@dimen/global_margin_padding_large"
+                android:paddingTop="@dimen/global_margin_padding"
+                android:text="@string/switcher_choose_device"
+                android:textColor="@color/white"
+                android:textSize="@dimen/global_text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.marshalchen.ultimaterecyclerview.UltimateRecyclerView
+                android:id="@+id/rv_device"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

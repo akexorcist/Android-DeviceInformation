@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_brand"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selector_box_white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="@dimen/switcher_brand_loading_size"
+        android:layout_height="@dimen/switcher_brand_loading_size"
+        android:src="@drawable/ic_loading"
+        android:layout_centerInParent="true" />
+
+    <ImageView
+        android:id="@+id/iv_brand_icon"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/switcher_brand_height"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/iv_brand_icon"
+        android:layout_alignParentTop="true"
+        android:background="@color/white_filter" />
+
+    <LinearLayout
+        android:id="@+id/layout_gradient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_brand_icon"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/shape_dark_fade_out"
+        android:padding="@dimen/global_margin_padding">
+
+        <TextView
+            android:id="@+id/tv_brand_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/sample"
+            android:textColor="@color/white"
+            android:textSize="@dimen/global_text_size_large"
+            android:layout_gravity="bottom" />
+
+        <ImageView
+            android:layout_width="@dimen/switcher_brand_next_icon_size"
+            android:layout_height="@dimen/switcher_brand_next_icon_size"
+            android:src="@drawable/ic_next"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

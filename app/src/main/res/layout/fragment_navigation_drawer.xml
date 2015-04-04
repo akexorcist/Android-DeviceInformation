@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/red"
+        android:orientation="horizontal"
+        android:padding="@dimen/global_margin_padding">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/global_margin_padding"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/iv_menu_device"
+                android:layout_width="@dimen/menu_image_device_size"
+                android:layout_height="@dimen/menu_image_device_size"
+                android:background="@drawable/device_unknown" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_menu_device_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="@string/menu_unknown_device"
+                android:textColor="@color/white"
+                android:textSize="@dimen/global_text_size_large" />
+
+            <TextView
+                android:id="@+id/tv_menu_device_model"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="@string/menu_unknown_device"
+                android:textColor="@color/white"
+                android:textSize="@dimen/global_text_size" />
+
+            <TextView
+                android:id="@+id/tv_menu_your_device"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="@string/menu_your_device"
+                android:textColor="@color/white"
+                android:textSize="@dimen/global_text_size" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lv_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:divider="@color/transparent" />
+</LinearLayout>

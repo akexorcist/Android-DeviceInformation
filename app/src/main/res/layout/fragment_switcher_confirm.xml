@@ -1,0 +1,130 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_blue"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_device_back"
+            android:layout_width="@dimen/switcher_back_button_size"
+            android:layout_height="@dimen/switcher_back_button_size"
+            android:background="@drawable/selector_box_transparent"
+            android:src="@drawable/ic_prev" />
+
+        <TextView
+            android:id="@+id/tv_chooser_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/global_margin_padding"
+            android:paddingRight="@dimen/global_margin_padding_large"
+            android:paddingTop="@dimen/global_margin_padding"
+            android:text="Confirm switcher"
+            android:textColor="@color/white"
+            android:textSize="@dimen/global_text_size" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/global_margin_padding_large"
+                android:layout_marginRight="@dimen/global_margin_padding_large"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="@dimen/global_margin_padding_large">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/switcher_name"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/global_text_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_device_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/global_margin_padding"
+                    android:text="@string/sample"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/global_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/switcher_version"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/global_text_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_device_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/global_margin_padding"
+                    android:text="@string/sample"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/global_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/switcher_fingerprint"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/global_text_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_device_fingerprint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/global_margin_padding"
+                    android:text="@string/sample"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/global_text_size" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btn_switcher_cancel"
+                    android:layout_width="@dimen/switcher_common_button_size"
+                    android:layout_height="@dimen/switcher_common_button_size"
+                    android:layout_margin="@dimen/global_margin_padding"
+                    android:background="@drawable/selector_oval_yellow"
+                    android:src="@drawable/ic_cancel" />
+
+                <ImageButton
+                    android:id="@+id/btn_switcher_ok"
+                    android:layout_width="@dimen/switcher_common_button_size"
+                    android:layout_height="@dimen/switcher_common_button_size"
+                    android:layout_margin="@dimen/global_margin_padding"
+                    android:background="@drawable/selector_oval_green"
+                    android:src="@drawable/ic_ok" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

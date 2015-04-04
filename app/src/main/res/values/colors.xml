@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="action_bar_bg">#009EB5</color>
+    
+    <color name="nav_drawer_bg">#29B8CD</color>
+    <color name="nav_drawer_divider">#05000000</color>
+
+    <color name="global_text_header">#0e91a4</color>
+    
+    <color name="global_anti_bg">#FFD200</color>
+    <color name="global_bg">#F1F1F1</color>
+    
+    <color name="global_row_gradient_1_bg">#00000000</color>
+    <color name="global_row_gradient_2_bg">#07000000</color>
+    
+    <color name="screen_measure_bg">#770076ba</color>
+    <color name="screen_measure_bg2">#77038d88</color>
+    
+    <color name="list_selector_bg">#fdcf09</color>
+
+    <color name="white">#ffffff</color>
+    <color name="light_white">#f7f7f7</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="white_filter">#88ffffff</color>
+    <color name="white_transparent">#55ffffff</color>
+    <color name="dark_transparent">#55000000</color>
+
+    <color name="dark_gray">#919192</color>
+    <color name="gray">#d1d2d4</color>
+    <color name="light_gray">#edecec</color>
+    <color name="yellow">#fdbb11</color>
+    <color name="yellow_pressed">#f2cf23</color>
+    <color name="red">#e81d5b</color>
+    <color name="red_pressed">#f5336e</color>
+    <color name="dark_blue">#0c858d</color>
+    <color name="blue">#019eb5</color>
+    <color name="light_blue">#16bcc9</color>
+    <color name="green">#67bf6f</color>
+    <color name="green_pressed">#4e9055</color>
+
+</resources>

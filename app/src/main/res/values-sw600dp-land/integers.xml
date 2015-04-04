@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="card_column">1</integer>
+    <integer name="hardware_card_column">2</integer>
+    <integer name="sensor_card_column">3</integer>
+    <integer name="feature_card_column">3</integer>
+    <integer name="app_card_column">2</integer>
+    <integer name="switcher_brand_card_column">3</integer>
+    <integer name="switcher_device_card_column">3</integer>
+    <integer name="switcher_sub_device_card_column">2</integer>
+
+</resources>
