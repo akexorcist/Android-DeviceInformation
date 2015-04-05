@@ -1,1 +1,1 @@
-include ':app', ':circularProgressButton', ':pullRefreshLayout'
+include ':app', ':circularProgressButton'
