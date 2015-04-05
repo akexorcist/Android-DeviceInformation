@@ -175,12 +175,11 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
+    public void onStop() {
+        super.onStop();
 
-        // Dismiss dialog, if showing
+        // Dismiss dialog, if visible
         if(dialogFragment != null && dialogFragment.isVisible()) {
-            dialogFragment.dismiss();
             dialogFragment.onStop();
         }
     }
