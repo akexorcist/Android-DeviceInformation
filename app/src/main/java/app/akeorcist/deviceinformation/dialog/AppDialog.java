@@ -125,4 +125,10 @@ public class AppDialog extends DialogFragment {
         blurHelper.onCancel(dialog);
         super.onCancel(dialog);
     }
+
+    @Override
+    public void onStop() {
+        blurHelper.onCancel(getDialog());
+        super.onStop();
+    }
 }

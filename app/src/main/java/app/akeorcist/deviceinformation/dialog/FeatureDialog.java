@@ -3,11 +3,11 @@ package app.akeorcist.deviceinformation.dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.ms.square.android.etsyblur.BlurDialogFragmentHelper;
@@ -77,5 +77,11 @@ public class FeatureDialog extends DialogFragment {
     public void onCancel(DialogInterface dialog) {
         blurHelper.onCancel(dialog);
         super.onCancel(dialog);
+    }
+
+    @Override
+    public void onStop() {
+        blurHelper.onCancel(getDialog());
+        super.onStop();
     }
 }

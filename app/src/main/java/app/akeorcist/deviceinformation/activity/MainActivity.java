@@ -174,6 +174,17 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         BusProvider.getNetworkInstance().unregister(this);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        // Dismiss dialog, if showing
+        if(dialogFragment != null && dialogFragment.isVisible()) {
+            dialogFragment.dismiss();
+            dialogFragment.onStop();
+        }
+    }
+
     // Get current device name and image url from web service or shared preference if exist
     private void getDeviceNameAndImage() {
         String deviceImage = "";

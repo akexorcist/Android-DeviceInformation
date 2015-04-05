@@ -107,8 +107,6 @@ public class SensorDialog extends DialogFragment {
         return rootView;
     }
 
-
-
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -125,5 +123,11 @@ public class SensorDialog extends DialogFragment {
     public void onCancel(DialogInterface dialog) {
         blurHelper.onCancel(dialog);
         super.onCancel(dialog);
+    }
+
+    @Override
+    public void onStop() {
+        blurHelper.onCancel(getDialog());
+        super.onStop();
     }
 }
