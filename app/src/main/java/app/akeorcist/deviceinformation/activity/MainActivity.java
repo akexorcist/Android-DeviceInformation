@@ -60,6 +60,7 @@ import app.akeorcist.deviceinformation.provider.BusProvider;
 import app.akeorcist.deviceinformation.utility.AppPreferences;
 import app.akeorcist.deviceinformation.utility.DevicePreferences;
 import app.akeorcist.deviceinformation.utility.StringUtils;
+import app.akeorcist.deviceinformation.utility.WindowsUtils;
 
 public class MainActivity extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     // Constant for page number
@@ -87,6 +88,9 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+        WindowsUtils.setStatusAndNavColor(this);
+
 		setContentView(R.layout.activity_main);
 
         // Register event bus

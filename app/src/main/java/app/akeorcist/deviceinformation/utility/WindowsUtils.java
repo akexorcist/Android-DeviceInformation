@@ -1,7 +1,7 @@
 package app.akeorcist.deviceinformation.utility;
 
 import android.app.Activity;
-import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -19,6 +19,12 @@ public class WindowsUtils {
         ActionBar actionBar = action.getSupportActionBar();
         if(actionBar != null)
             actionBar.hide();
+    }
+
+    public static void setActionBarColor(ActionBarActivity activity) {
+        ActionBar ab = activity.getSupportActionBar();
+        if(ab != null)
+            ab.setBackgroundDrawable(new ColorDrawable(activity.getResources().getColor(R.color.blue)));
     }
 
     public static void setStatusAndNavColor(Activity activity) {

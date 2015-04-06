@@ -28,7 +28,7 @@ import app.akeorcist.deviceinformation.utility.AppPreferences;
 import app.akeorcist.deviceinformation.utility.DevicePreferences;
 import app.akeorcist.deviceinformation.utility.FirstTimePreferences;
 import app.akeorcist.deviceinformation.utility.SnackBar;
-import app.akeorcist.deviceinformation.view.FinishButton;
+import app.akeorcist.deviceinformation.view.FinishImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,11 +37,11 @@ public class SubmitFragment extends StatedFragment implements View.OnClickListen
     private Activity activity;
     private CircularProgressButton btnSubmitInfo;
     private LinearLayout layoutSubmitStatus;
-    private FinishButton btnFinish;
-    private FinishButton btnConnectionAvailable;
-    private FinishButton btnCollectDeviceInfo;
-    private FinishButton btnDeviceExisting;
-    private FinishButton btnSendDeviceInfo;
+    private FinishImageView btnFinish;
+    private FinishImageView btnConnectionAvailable;
+    private FinishImageView btnCollectDeviceInfo;
+    private FinishImageView btnDeviceExisting;
+    private FinishImageView btnSendDeviceInfo;
     private ProgressWheel progressWheel;
 
     public static SubmitFragment newInstance() {
@@ -86,11 +86,11 @@ public class SubmitFragment extends StatedFragment implements View.OnClickListen
 
         btnSubmitInfo = (CircularProgressButton) rootView.findViewById(R.id.btn_submit_info);
 
-        btnConnectionAvailable = (FinishButton) rootView.findViewById(R.id.iv_connection_available);
-        btnDeviceExisting = (FinishButton) rootView.findViewById(R.id.iv_device_existing);
-        btnCollectDeviceInfo = (FinishButton) rootView.findViewById(R.id.iv_collect_device_info);
-        btnSendDeviceInfo = (FinishButton) rootView.findViewById(R.id.iv_send_device_info);
-        btnFinish = (FinishButton) rootView.findViewById(R.id.iv_finish);
+        btnConnectionAvailable = (FinishImageView) rootView.findViewById(R.id.iv_connection_available);
+        btnDeviceExisting = (FinishImageView) rootView.findViewById(R.id.iv_device_existing);
+        btnCollectDeviceInfo = (FinishImageView) rootView.findViewById(R.id.iv_collect_device_info);
+        btnSendDeviceInfo = (FinishImageView) rootView.findViewById(R.id.iv_send_device_info);
+        btnFinish = (FinishImageView) rootView.findViewById(R.id.iv_finish);
 
         btnSubmitInfo.setOnTouchListener(AnimateUtils.touchAnimateListener);
         btnSubmitInfo.setOnClickListener(SubmitFragment.this);

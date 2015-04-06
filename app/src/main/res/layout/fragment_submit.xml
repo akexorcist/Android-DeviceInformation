@@ -63,7 +63,7 @@
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <app.akeorcist.deviceinformation.view.FinishButton
+                        <app.akeorcist.deviceinformation.view.FinishImageView
                             android:id="@+id/iv_connection_available"
                             android:layout_width="@dimen/submit_finish_button_size"
                             android:layout_height="@dimen/submit_finish_button_size"
@@ -86,7 +86,7 @@
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <app.akeorcist.deviceinformation.view.FinishButton
+                        <app.akeorcist.deviceinformation.view.FinishImageView
                             android:id="@+id/iv_device_existing"
                             android:layout_width="@dimen/submit_finish_button_size"
                             android:layout_height="@dimen/submit_finish_button_size"
@@ -109,7 +109,7 @@
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <app.akeorcist.deviceinformation.view.FinishButton
+                        <app.akeorcist.deviceinformation.view.FinishImageView
                             android:id="@+id/iv_collect_device_info"
                             android:layout_width="@dimen/submit_finish_button_size"
                             android:layout_height="@dimen/submit_finish_button_size"
@@ -132,7 +132,7 @@
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <app.akeorcist.deviceinformation.view.FinishButton
+                        <app.akeorcist.deviceinformation.view.FinishImageView
                             android:id="@+id/iv_send_device_info"
                             android:layout_width="@dimen/submit_finish_button_size"
                             android:layout_height="@dimen/submit_finish_button_size"
@@ -155,7 +155,7 @@
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <app.akeorcist.deviceinformation.view.FinishButton
+                        <app.akeorcist.deviceinformation.view.FinishImageView
                             android:id="@+id/iv_finish"
                             android:layout_width="@dimen/submit_finish_button_size"
                             android:layout_height="@dimen/submit_finish_button_size"

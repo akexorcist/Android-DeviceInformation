@@ -17,6 +17,7 @@ import app.akeorcist.deviceinformation.utility.FirstTimePreferences;
 import app.akeorcist.deviceinformation.adapter.WelcomePagerAdapter;
 import app.akeorcist.deviceinformation.event.WelcomeEvent;
 import app.akeorcist.deviceinformation.provider.BusProvider;
+import app.akeorcist.deviceinformation.utility.WindowsUtils;
 
 public class WelcomeActivity extends ActionBarActivity {
     ViewPager pagerWelcome;
@@ -26,12 +27,8 @@ public class WelcomeActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
-        // Set actionbar color
-        ActionBar ab = getSupportActionBar();
-        if(ab != null)
-            ab.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.blue)));
+        WindowsUtils.setStatusAndNavColor(this);
+        WindowsUtils.setActionBarColor(this);
 
         setContentView(R.layout.activity_welcome);
 

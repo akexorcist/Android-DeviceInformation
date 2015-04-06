@@ -14,7 +14,7 @@ import app.akeorcist.deviceinformation.R;
 /**
  * Created by Akexorcist on 3/8/15 AD.
  */
-public class FinishButton extends ImageView {
+public class FinishImageView extends ImageView {
     public static final int STATE_IDLE = 0;
     public static final int STATE_FINISH = 1;
     public static final int STATE_ERROR = 2;
@@ -26,15 +26,15 @@ public class FinishButton extends ImageView {
     private int srcErrorResId = 0;
     private int bgErrorResId = 0;
 
-    public FinishButton(Context context) {
+    public FinishImageView(Context context) {
         super(context);
     }
 
-    public FinishButton(Context context, AttributeSet attrs) {
+    public FinishImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public FinishButton(Context context, AttributeSet attrs, int defStyleAttr) {
+    public FinishImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

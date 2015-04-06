@@ -2,11 +2,8 @@ package app.akeorcist.deviceinformation.fragment.main;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +11,9 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.baoyz.widget.PullRefreshLayout;
 import com.inthecheesefactory.thecheeselibrary.fragment.support.v4.app.StatedFragment;
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 import com.marshalchen.ultimaterecyclerview.animators.FadeInAnimator;
-import com.marshalchen.ultimaterecyclerview.animators.ScaleInTopAnimator;
-import com.nispok.snackbar.Snackbar;
-import com.nispok.snackbar.SnackbarManager;
-import com.nispok.snackbar.listeners.ActionClickListener;
 import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
@@ -35,9 +27,7 @@ import app.akeorcist.deviceinformation.event.ChooseDeviceNameEvent;
 import app.akeorcist.deviceinformation.event.DeviceQueryEvent;
 import app.akeorcist.deviceinformation.event.PagerControlEvent;
 import app.akeorcist.deviceinformation.event.ViewEvent;
-import app.akeorcist.deviceinformation.model.DeviceList;
 import app.akeorcist.deviceinformation.model.SubDevice;
-import app.akeorcist.deviceinformation.network.NetworkManager;
 import app.akeorcist.deviceinformation.provider.BusProvider;
 import app.akeorcist.deviceinformation.utility.AnimateUtils;
 import app.akeorcist.deviceinformation.utility.FirstTimePreferences;

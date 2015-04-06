@@ -1,19 +1,13 @@
 package app.akeorcist.deviceinformation.activity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 
 import com.parse.Parse;
 import com.parse.ParseCrashReporting;
-
-import java.util.HashSet;
 
 import app.akeorcist.deviceinformation.R;
 import app.akeorcist.deviceinformation.constants.Constants;
@@ -25,9 +19,7 @@ import app.akeorcist.deviceinformation.data.device.FeatureManager;
 import app.akeorcist.deviceinformation.data.device.HardwareManager;
 import app.akeorcist.deviceinformation.data.device.ScreenManager;
 import app.akeorcist.deviceinformation.data.device.SensorListManager;
-import app.akeorcist.deviceinformation.data.device.hardware.ExternalStorageManager;
 import app.akeorcist.deviceinformation.data.file.FileManager;
-import app.akeorcist.deviceinformation.event.WelcomeEvent;
 import app.akeorcist.deviceinformation.utility.AppPreferences;
 import app.akeorcist.deviceinformation.utility.DevicePreferences;
 import app.akeorcist.deviceinformation.utility.FirstTimePreferences;
@@ -40,13 +32,13 @@ public class SplashscreenActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        WindowsUtils.setStatusAndNavColor(this);
         WindowsUtils.hideActionBar(this);
 
         setContentView(R.layout.activity_splashscreen);
 
         initialPreference();
         initialData();
-        //initialSD();
         initialParse();
     }
 
@@ -90,22 +82,6 @@ public class SplashscreenActivity extends ActionBarActivity {
             }
         });
         onDataLoaded();
-    }
-
-    private void initialSD() {
-        HashSet<String> externalLocations = ExternalStorageManager.getStorageSet();
-
-        String str = "";
-        for(int i = 0 ; i < externalLocations.size() ; i++) {
-            Object[] myArr = externalLocations.toArray();
-            String value1 = myArr[0].toString();
-            str += value1 + "|||||";
-        }
-
-
-        android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        android.content.ClipData clip = android.content.ClipData.newPlainText("text label", str);
-        clipboard.setPrimaryClip(clip);
     }
 
     private void destroyData() {
