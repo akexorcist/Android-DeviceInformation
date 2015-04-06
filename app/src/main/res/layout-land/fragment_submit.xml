@@ -34,138 +34,142 @@
             android:textColor="@color/white"
             android:textSize="@dimen/global_text_size"
             app:cpb_cornerRadius="@dimen/global_corner_radius"
-            app:cpb_iconComplete="@drawable/menu_icon_app"
-            app:cpb_iconError="@drawable/menu_icon_feature"
+            app:cpb_iconComplete="@drawable/ic_ok"
             app:cpb_selectorComplete="@drawable/selector_green"
             app:cpb_selectorError="@drawable/selector_yellow"
             app:cpb_selectorIdle="@drawable/selector_box_red"
-            app:cpb_textIdle="Send" />
+            app:cpb_textIdle="@string/send" />
 
-        <LinearLayout
-            android:id="@+id/layout_submit_status"
+        <ScrollView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:orientation="vertical"
-            android:touchscreenBlocksFocus="true"
-            android:layout_marginLeft="@dimen/global_margin_padding_large"
-            android:layout_marginRight="@dimen/global_margin_padding_large">
+            android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:id="@+id/layout_submit_status"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/global_margin_padding_large"
+                    android:layout_marginRight="@dimen/global_margin_padding_large"
+                    android:orientation="vertical"
+                    android:touchscreenBlocksFocus="true">
 
-                <app.akeorcist.deviceinformation.view.FinishImageView
-                    android:id="@+id/iv_connection_available"
-                    android:layout_width="@dimen/submit_finish_button_size"
-                    android:layout_height="@dimen/submit_finish_button_size"
-                    android:layout_margin="@dimen/global_margin_padding_small"
-                    android:background="@drawable/shape_oval_light_gray"
-                    android:scaleType="fitCenter" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Connection Available"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="@dimen/global_text_size" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <app.akeorcist.deviceinformation.view.FinishImageView
+                        android:id="@+id/iv_connection_available"
+                        android:layout_width="@dimen/submit_finish_button_size"
+                        android:layout_height="@dimen/submit_finish_button_size"
+                        android:layout_margin="@dimen/global_margin_padding_small"
+                        android:background="@drawable/shape_oval_light_gray"
+                        android:scaleType="fitCenter" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Connection Available"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/global_text_size" />
 
-                <app.akeorcist.deviceinformation.view.FinishImageView
-                    android:id="@+id/iv_device_existing"
-                    android:layout_width="@dimen/submit_finish_button_size"
-                    android:layout_height="@dimen/submit_finish_button_size"
-                    android:layout_margin="@dimen/global_margin_padding_small"
-                    android:background="@drawable/shape_oval_light_gray"
-                    android:scaleType="fitCenter" />
+                </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Check new device"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="@dimen/global_text_size" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <app.akeorcist.deviceinformation.view.FinishImageView
+                        android:id="@+id/iv_device_existing"
+                        android:layout_width="@dimen/submit_finish_button_size"
+                        android:layout_height="@dimen/submit_finish_button_size"
+                        android:layout_margin="@dimen/global_margin_padding_small"
+                        android:background="@drawable/shape_oval_light_gray"
+                        android:scaleType="fitCenter" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Check new device"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/global_text_size" />
 
-                <app.akeorcist.deviceinformation.view.FinishImageView
-                    android:id="@+id/iv_collect_device_info"
-                    android:layout_width="@dimen/submit_finish_button_size"
-                    android:layout_height="@dimen/submit_finish_button_size"
-                    android:layout_margin="@dimen/global_margin_padding_small"
-                    android:background="@drawable/shape_oval_light_gray"
-                    android:scaleType="fitCenter" />
+                </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Collect Device Info"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="@dimen/global_text_size" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <app.akeorcist.deviceinformation.view.FinishImageView
+                        android:id="@+id/iv_collect_device_info"
+                        android:layout_width="@dimen/submit_finish_button_size"
+                        android:layout_height="@dimen/submit_finish_button_size"
+                        android:layout_margin="@dimen/global_margin_padding_small"
+                        android:background="@drawable/shape_oval_light_gray"
+                        android:scaleType="fitCenter" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Collect Device Info"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/global_text_size" />
 
-                <app.akeorcist.deviceinformation.view.FinishImageView
-                    android:id="@+id/iv_send_device_info"
-                    android:layout_width="@dimen/submit_finish_button_size"
-                    android:layout_height="@dimen/submit_finish_button_size"
-                    android:layout_margin="@dimen/global_margin_padding_small"
-                    android:background="@drawable/shape_oval_light_gray"
-                    android:scaleType="fitCenter" />
+                </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Send Device Info"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="@dimen/global_text_size" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <app.akeorcist.deviceinformation.view.FinishImageView
+                        android:id="@+id/iv_send_device_info"
+                        android:layout_width="@dimen/submit_finish_button_size"
+                        android:layout_height="@dimen/submit_finish_button_size"
+                        android:layout_margin="@dimen/global_margin_padding_small"
+                        android:background="@drawable/shape_oval_light_gray"
+                        android:scaleType="fitCenter" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Send Device Info"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/global_text_size" />
 
-                <app.akeorcist.deviceinformation.view.FinishImageView
-                    android:id="@+id/iv_finish"
-                    android:layout_width="@dimen/submit_finish_button_size"
-                    android:layout_height="@dimen/submit_finish_button_size"
-                    android:layout_margin="@dimen/global_margin_padding_small"
-                    android:background="@drawable/shape_oval_light_gray"
-                    android:scaleType="fitCenter" />
+                </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Finish!"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="@dimen/global_text_size" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
+                    <app.akeorcist.deviceinformation.view.FinishImageView
+                        android:id="@+id/iv_finish"
+                        android:layout_width="@dimen/submit_finish_button_size"
+                        android:layout_height="@dimen/submit_finish_button_size"
+                        android:layout_margin="@dimen/global_margin_padding_small"
+                        android:background="@drawable/shape_oval_light_gray"
+                        android:scaleType="fitCenter" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Finish!"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/global_text_size" />
+
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 

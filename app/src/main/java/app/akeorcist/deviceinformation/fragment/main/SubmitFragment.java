@@ -288,25 +288,30 @@ public class SubmitFragment extends StatedFragment implements View.OnClickListen
     }
 
     private void initialFinishButton() {
-        btnConnectionAvailable.setFinishImageResource(R.drawable.ic_finish);
-        btnConnectionAvailable.setErrorImageResource(R.drawable.ic_error);
+        btnConnectionAvailable.setFinishImageResource(R.drawable.ic_ok);
         btnConnectionAvailable.setFinishBackgroundResource(R.drawable.shape_oval_green);
+        btnConnectionAvailable.setErrorImageResource(R.drawable.ic_cancel);
+        btnConnectionAvailable.setErrorBackgroundResource(R.drawable.shape_oval_red);
 
-        btnDeviceExisting.setFinishImageResource(R.drawable.ic_finish);
-        btnDeviceExisting.setErrorImageResource(R.drawable.ic_error);
+        btnDeviceExisting.setFinishImageResource(R.drawable.ic_ok);
         btnDeviceExisting.setFinishBackgroundResource(R.drawable.shape_oval_green);
+        btnDeviceExisting.setErrorImageResource(R.drawable.ic_cancel);
+        btnDeviceExisting.setErrorBackgroundResource(R.drawable.shape_oval_red);
 
-        btnCollectDeviceInfo.setFinishImageResource(R.drawable.ic_finish);
-        btnCollectDeviceInfo.setErrorImageResource(R.drawable.ic_error);
+        btnCollectDeviceInfo.setFinishImageResource(R.drawable.ic_ok);
         btnCollectDeviceInfo.setFinishBackgroundResource(R.drawable.shape_oval_green);
+        btnCollectDeviceInfo.setErrorImageResource(R.drawable.ic_cancel);
+        btnCollectDeviceInfo.setErrorBackgroundResource(R.drawable.shape_oval_red);
 
-        btnSendDeviceInfo.setFinishImageResource(R.drawable.ic_finish);
-        btnSendDeviceInfo.setErrorImageResource(R.drawable.ic_error);
+        btnSendDeviceInfo.setFinishImageResource(R.drawable.ic_ok);
         btnSendDeviceInfo.setFinishBackgroundResource(R.drawable.shape_oval_green);
+        btnSendDeviceInfo.setErrorImageResource(R.drawable.ic_cancel);
+        btnSendDeviceInfo.setErrorBackgroundResource(R.drawable.shape_oval_red);
 
-        btnFinish.setFinishImageResource(R.drawable.ic_finish);
-        btnFinish.setErrorImageResource(R.drawable.ic_error);
+        btnFinish.setFinishImageResource(R.drawable.ic_ok);
         btnFinish.setFinishBackgroundResource(R.drawable.shape_oval_green);
+        btnFinish.setErrorImageResource(R.drawable.ic_cancel);
+        btnFinish.setErrorBackgroundResource(R.drawable.shape_oval_red);
     }
 
     private void setupFinishButton() {

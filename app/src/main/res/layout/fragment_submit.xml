@@ -36,12 +36,11 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/global_text_size"
                 app:cpb_cornerRadius="@dimen/global_corner_radius"
-                app:cpb_iconComplete="@drawable/menu_icon_app"
-                app:cpb_iconError="@drawable/menu_icon_feature"
+                app:cpb_iconComplete="@drawable/ic_ok"
                 app:cpb_selectorComplete="@drawable/selector_green"
                 app:cpb_selectorError="@drawable/selector_yellow"
                 app:cpb_selectorIdle="@drawable/selector_box_red"
-                app:cpb_textIdle="Send" />
+                app:cpb_textIdle="@string/send"/>
 
             <RelativeLayout
                 android:layout_width="wrap_content"

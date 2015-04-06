@@ -11,6 +11,7 @@
     <string name="next">Next</string>
     <string name="skip">Skip</string>
     <string name="loading">Loading...</string>
+    <string name="send">SEND</string>
 
     <string name="welcome_if_you_are">If you are</string>
     <string name="welcome_developer">Developer</string>
