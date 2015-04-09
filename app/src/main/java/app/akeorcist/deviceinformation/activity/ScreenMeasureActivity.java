@@ -20,9 +20,9 @@ public class ScreenMeasureActivity extends ActionBarActivity {
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         WindowsUtils.setStatusAndNavColor(this);
 
         setContentView(R.layout.activity_screen_measure);
