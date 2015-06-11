@@ -16,7 +16,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -36,12 +35,17 @@ import app.akeorcist.deviceinformation.data.file.FileManager;
 import app.akeorcist.deviceinformation.dialog.AppDialog;
 import app.akeorcist.deviceinformation.dialog.FeatureDialog;
 import app.akeorcist.deviceinformation.dialog.SensorDialog;
+import app.akeorcist.deviceinformation.event.BackPressedDeviceSwitcherEvent;
+import app.akeorcist.deviceinformation.event.BackPressedEvent;
+import app.akeorcist.deviceinformation.event.BackPressedOptionsMenuEvent;
 import app.akeorcist.deviceinformation.event.ConfirmSwitchEvent;
 import app.akeorcist.deviceinformation.event.DeviceNameDownloadEvent;
 import app.akeorcist.deviceinformation.event.DeviceNameResultEvent;
 import app.akeorcist.deviceinformation.event.DevicePrompt;
 import app.akeorcist.deviceinformation.event.DeviceSwitchEvent;
+import app.akeorcist.deviceinformation.event.DeviceSwitcherBackable;
 import app.akeorcist.deviceinformation.event.DialogFeatureEvent;
+import app.akeorcist.deviceinformation.event.SearchBarEvent;
 import app.akeorcist.deviceinformation.event.ViewEvent;
 import app.akeorcist.deviceinformation.fragment.main.AppFragment;
 import app.akeorcist.deviceinformation.fragment.main.Camera2Fragment;
@@ -56,9 +60,11 @@ import app.akeorcist.deviceinformation.fragment.main.SwitcherFragment;
 import app.akeorcist.deviceinformation.model.AppData;
 import app.akeorcist.deviceinformation.model.SensorData;
 import app.akeorcist.deviceinformation.model.SubDevice;
+import app.akeorcist.deviceinformation.network.NetworkManager;
 import app.akeorcist.deviceinformation.provider.BusProvider;
 import app.akeorcist.deviceinformation.utility.AppPreferences;
 import app.akeorcist.deviceinformation.utility.DevicePreferences;
+import app.akeorcist.deviceinformation.utility.FirstTimePreferences;
 import app.akeorcist.deviceinformation.utility.StringUtils;
 import app.akeorcist.deviceinformation.utility.WindowsUtils;
 
@@ -73,6 +79,12 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 
     // Is current information from that device or another device that fetch from web server
     private boolean isYourDevice = true;
+
+    // Is search bar on current fragment showing
+    private boolean isSearchBarExpanded = false;
+
+    // Is device switcher fragment is showing (For handle viewpager from back pressed)
+    private boolean isDeviceSwitcherBackable = false;
 
     // Current and history page
 	private int currentPosition = -1;
@@ -111,6 +123,11 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         if(savedInstanceState == null) {
             selectFragment(FIRST_PAGE);
             getDeviceNameAndImage();
+        }
+
+        //TODO Collect storage path
+        if(FirstTimePreferences.hasSentSDInfo(this)) {
+            //NetworkManager.sendSD(this);
         }
 
         // Droidsans Features
@@ -395,6 +412,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 		actionBar.setDisplayShowTitleEnabled(true);
 		actionBar.setTitle(mTitle);
+        //actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
 		int color = getResources().getColor(R.color.action_bar_bg);
 		ColorDrawable colorDrawable = new ColorDrawable(color);
 		actionBar.setBackgroundDrawable(colorDrawable);
@@ -415,14 +433,24 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     // Handler back button pressed
 	public void onBackPressed() {
 		if(mNavigationDrawerFragment.isVisible()) {
-			mNavigationDrawerFragment.hideNavigationDrawer();   
-		} else if(historyPosition.size() > 1) {
+			mNavigationDrawerFragment.hideNavigationDrawer();
+        } else if(isSearchBarExpanded) {
+            BusProvider.getInstance().post(new BackPressedOptionsMenuEvent());
+        } else if(isDeviceSwitcherBackable) {
+            BusProvider.getInstance().post(new BackPressedDeviceSwitcherEvent());
+        } else if(historyPosition.size() > 1) {
             historyPosition.remove(historyPosition.size() - 1);
             backToFragment(historyPosition.get(historyPosition.size() - 1));
         } else {
 			super.onBackPressed();
 		}
 	}
+
+    // Call onBackPressed
+    @Subscribe
+    public void onBackPressedFromEventBus(BackPressedEvent event) {
+        onBackPressed();
+    }
 
     // Display feature information dialog
     @Subscribe
@@ -473,7 +501,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     // Failed to get a result of device information
     @Subscribe
     public void failedRetrieveDeviceInfo(final DeviceSwitchEvent event) {
-        if(DeviceSwitchEvent.EVENT_FAILURE.equals(event.getEvent())) {
+        if (DeviceSwitchEvent.EVENT_FAILURE.equals(event.getEvent())) {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -568,6 +596,18 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
                         refreshNavigatorDrawer();
                     }
                 }), MainActivity.this);
+    }
+
+    // Set search bar on current fragment status
+    @Subscribe
+    public void setSearchBarExpanded(SearchBarEvent event) {
+        isSearchBarExpanded = event.isSearchBarExpanded();
+    }
+
+    // Back pressed handle for device switcher fragment
+    @Subscribe
+    public void setDeviceSwitcherPage(DeviceSwitcherBackable event) {
+        isDeviceSwitcherBackable = event.isDeviceSwitcherBackable();
     }
 
     // Restore navigator drawer state when rotate

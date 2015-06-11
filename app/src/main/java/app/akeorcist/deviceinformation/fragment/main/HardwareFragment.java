@@ -6,8 +6,9 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -58,6 +59,7 @@ public class HardwareFragment extends StatedFragment {
             }
         }
 
+        setHasOptionsMenu(true);
         return rootView;
     }
 
@@ -109,5 +111,10 @@ public class HardwareFragment extends StatedFragment {
                 AnimateUtils.fadeInAnimateWithZero(rvHardwareCard);
             }
         });
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

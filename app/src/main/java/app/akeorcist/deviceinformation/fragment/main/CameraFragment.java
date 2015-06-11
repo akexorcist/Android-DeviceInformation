@@ -2,9 +2,10 @@ package app.akeorcist.deviceinformation.fragment.main;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -16,8 +17,6 @@ import com.squareup.otto.Subscribe;
 
 import app.akeorcist.deviceinformation.R;
 import app.akeorcist.deviceinformation.adapter.CameraPagerAdapter;
-import app.akeorcist.deviceinformation.data.device.Camera2Manager;
-import app.akeorcist.deviceinformation.data.device.CameraManager;
 import app.akeorcist.deviceinformation.data.device.DataManager;
 import app.akeorcist.deviceinformation.event.ViewEvent;
 import app.akeorcist.deviceinformation.provider.BusProvider;
@@ -32,8 +31,7 @@ public class CameraFragment extends StatedFragment {
     private int cameraCount;
 
 	public static CameraFragment newInstance() {
-		CameraFragment fragment = new CameraFragment();
-		return fragment;
+		return new CameraFragment();
 	}
 
 	public CameraFragment() { }
@@ -57,6 +55,7 @@ public class CameraFragment extends StatedFragment {
             progressWheel.setVisibility(View.VISIBLE);
         }
 
+        setHasOptionsMenu(true);
 		return rootView;
 	}
 
@@ -68,7 +67,7 @@ public class CameraFragment extends StatedFragment {
         CameraPagerAdapter adapter = new CameraPagerAdapter(activity, getChildFragmentManager(), strTitle);
         if(vpContent != null)
             vpContent.setAdapter(adapter);
-        if(pagerTab != null)
+        if(pagerTab != null && vpContent != null)
             pagerTab.setViewPager(vpContent);
     }
 
@@ -113,5 +112,10 @@ public class CameraFragment extends StatedFragment {
                 AnimateUtils.fadeInAnimateWithZero(layoutContent);
             }
         });
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

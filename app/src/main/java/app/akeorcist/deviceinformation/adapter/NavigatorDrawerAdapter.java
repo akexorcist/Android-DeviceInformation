@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import app.akeorcist.deviceinformation.R;
+import app.akeorcist.deviceinformation.constants.Page;
 
 /**
  * Created by Ake on 2/26/2015.
@@ -92,14 +93,16 @@ public class NavigatorDrawerAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.view_row_menu_navigator_drawer_empty, parent, false);
             convertView.setTag("empty");
             return convertView;
-        } else if(!isViewMenuShow[position] && "empty".equals(convertView.getTag())) {
+        } else if(!isViewMenuShow[position] && convertView != null && "empty".equals(convertView.getTag())) {
             return convertView;
         }
 
         ImageView ivMenuList = (ImageView) convertView.findViewById(R.id.iv_menu_list);
         ivMenuList.setImageResource(arrIconList[position]);
-        if(position == 0) {
+        if(position == Page.BACK_YOUR_DEVICE) {
             ivMenuList.setBackgroundResource(R.drawable.shape_oval_yellow);
+        } else if(position == Page.CHANGE_DEVICE) {
+                ivMenuList.setBackgroundResource(R.drawable.shape_oval_blue);
         } else {
             ivMenuList.setBackgroundResource(R.drawable.shape_oval_red);
         }

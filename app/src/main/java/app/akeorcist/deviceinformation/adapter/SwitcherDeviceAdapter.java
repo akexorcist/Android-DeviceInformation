@@ -18,15 +18,19 @@ import app.akeorcist.deviceinformation.R;
 import app.akeorcist.deviceinformation.constants.URL;
 import app.akeorcist.deviceinformation.holder.SwitcherBrandHolder;
 import app.akeorcist.deviceinformation.holder.SwitcherDeviceHolder;
+import app.akeorcist.deviceinformation.model.DeviceList;
 
 public class SwitcherDeviceAdapter extends RecyclerView.Adapter<SwitcherDeviceHolder> {
     private Context context;
     private OnItemClickListener listener;
+    private boolean isEnabled = true;
     private ArrayList<String> arrDeviceList = new ArrayList<>();
+    private ArrayList<String> arrModelList = new ArrayList<>();
 
-    public SwitcherDeviceAdapter(Context context, ArrayList<String> arrDeviceList) {
+    public SwitcherDeviceAdapter(Context context, ArrayList<String> arrDeviceList, ArrayList<String> arrModelList) {
         this.context = context;
         this.arrDeviceList = arrDeviceList;
+        this.arrModelList = arrModelList;
     }
 
     public SwitcherDeviceHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
@@ -37,12 +41,18 @@ public class SwitcherDeviceAdapter extends RecyclerView.Adapter<SwitcherDeviceHo
     @Override
     public void onBindViewHolder(final SwitcherDeviceHolder viewHolder, final int position) {
         String name = arrDeviceList.get(position);
+        String model = arrModelList.get(position);
 
         viewHolder.tvDeviceName.setText(name);
+        if(model != null && !model.equals(""))
+            viewHolder.tvDeviceModel.setText(model);
+        else
+            viewHolder.tvDeviceModel.setVisibility(View.GONE);
+
         viewHolder.layoutDevice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(listener != null)
+                if(listener != null && isEnabled)
                     listener.onItemClick(viewHolder.layoutDevice, position);
             }
         });
@@ -53,6 +63,14 @@ public class SwitcherDeviceAdapter extends RecyclerView.Adapter<SwitcherDeviceHo
         if(arrDeviceList != null)
             return arrDeviceList.size();
         return 0;
+    }
+
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(boolean isEnable) {
+        this.isEnabled = isEnable;
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {

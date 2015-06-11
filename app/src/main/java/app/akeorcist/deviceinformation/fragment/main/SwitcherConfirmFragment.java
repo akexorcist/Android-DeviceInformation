@@ -17,6 +17,7 @@ import app.akeorcist.deviceinformation.event.ChooseDeviceEvent;
 import app.akeorcist.deviceinformation.event.ConfirmSwitchEvent;
 import app.akeorcist.deviceinformation.event.DevicePrompt;
 import app.akeorcist.deviceinformation.event.DeviceSwitchEvent;
+import app.akeorcist.deviceinformation.event.DeviceSwitcherNext;
 import app.akeorcist.deviceinformation.event.PagerControlEvent;
 import app.akeorcist.deviceinformation.model.SubDevice;
 import app.akeorcist.deviceinformation.provider.BusProvider;

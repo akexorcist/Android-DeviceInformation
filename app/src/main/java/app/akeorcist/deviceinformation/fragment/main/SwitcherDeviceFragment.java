@@ -2,9 +2,14 @@ package app.akeorcist.deviceinformation.fragment.main;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -16,15 +21,19 @@ import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import app.akeorcist.deviceinformation.R;
 import app.akeorcist.deviceinformation.adapter.SwitcherDeviceAdapter;
 import app.akeorcist.deviceinformation.application.DDIApplication;
 import app.akeorcist.deviceinformation.constants.Status;
+import app.akeorcist.deviceinformation.event.BackPressedOptionsMenuEvent;
 import app.akeorcist.deviceinformation.event.ChooseBrandEvent;
 import app.akeorcist.deviceinformation.event.ChooseDeviceNameEvent;
 import app.akeorcist.deviceinformation.event.DeviceQueryEvent;
+import app.akeorcist.deviceinformation.event.DeviceSwitcherNext;
 import app.akeorcist.deviceinformation.event.PagerControlEvent;
+import app.akeorcist.deviceinformation.event.SearchBarEvent;
 import app.akeorcist.deviceinformation.event.ViewEvent;
 import app.akeorcist.deviceinformation.model.DeviceList;
 import app.akeorcist.deviceinformation.provider.BusProvider;
@@ -32,17 +41,21 @@ import app.akeorcist.deviceinformation.utility.AnimateUtils;
 import app.akeorcist.deviceinformation.utility.FirstTimePreferences;
 import app.akeorcist.deviceinformation.utility.SnackBar;
 
-public class SwitcherDeviceFragment extends StatedFragment implements View.OnClickListener {
+public class SwitcherDeviceFragment extends StatedFragment implements View.OnClickListener, SearchView.OnQueryTextListener, MenuItemCompat.OnActionExpandListener {
     private Activity activity;
     private LinearLayout layoutPullDown;
     private UltimateRecyclerView rvDevice;
     private TextView tvChooserDevice;
-    private ImageButton btnDeviceBack;
+    private MenuItem searchItem;
     private SwitcherDeviceAdapter switcherDeviceAdapter;
-    private ArrayList<String> arrDeviceList = new ArrayList<>();
+    private ArrayList<String> arrStringDeviceList = new ArrayList<>();
+    private ArrayList<String> arrStringModelList = new ArrayList<>();
     private ArrayList<DeviceList> deviceLists = new ArrayList<>();
+    private ArrayList<DeviceList> resultDeviceLists = new ArrayList<>();
 
     private String brand = "";
+    private boolean isSearchBarExpanded = false;
+    private boolean isContentReady = false;
 
     // Error handle when rotate
     private int status = Status.STATUS_IDLE;
@@ -62,18 +75,20 @@ public class SwitcherDeviceFragment extends StatedFragment implements View.OnCli
 
         tvChooserDevice = (TextView) rootView.findViewById(R.id.tv_chooser_title);
 
-        btnDeviceBack = (ImageButton) rootView.findViewById(R.id.btn_device_back);
+        ImageButton btnDeviceBack = (ImageButton) rootView.findViewById(R.id.btn_device_back);
         btnDeviceBack.setOnClickListener(this);
         btnDeviceBack.setOnTouchListener(AnimateUtils.touchAnimateListener);
 
-        switcherDeviceAdapter = new SwitcherDeviceAdapter(activity, arrDeviceList);
+        switcherDeviceAdapter = new SwitcherDeviceAdapter(activity, arrStringDeviceList, arrStringModelList);
         switcherDeviceAdapter.setOnItemClickListener(new SwitcherDeviceAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 // TODO Do something when user select on some device
-                if(position < arrDeviceList.size()) {
+                if (position < arrStringDeviceList.size()) {
                     BusProvider.getInstance().post(new PagerControlEvent(PagerControlEvent.MOVE_NEXT));
-                    BusProvider.getInstance().post(new ChooseDeviceNameEvent(brand, deviceLists.get(position)));
+                    BusProvider.getInstance().post(new ChooseDeviceNameEvent(brand, resultDeviceLists.get(position)));
+                    BusProvider.getInstance().post(new DeviceSwitcherNext(SwitcherFragment.PAGE_SWITCHER_SUB_DEVICE));
+                    collapseOptionsMenu();
                 }
             }
         });
@@ -92,9 +107,11 @@ public class SwitcherDeviceFragment extends StatedFragment implements View.OnCli
             }
         });
 
-
+        setHasOptionsMenu(true);
 		return rootView;
 	}
+
+
 
     @Override
     public void onSaveState(Bundle outState) {
@@ -120,6 +137,7 @@ public class SwitcherDeviceFragment extends StatedFragment implements View.OnCli
         brand = savedInstanceState.getString("brand");
         status = savedInstanceState.getInt("status");
 
+        resultDeviceLists = new ArrayList<>();
         deviceLists = new ArrayList<>();
         ArrayList<String> arrNameList = savedInstanceState.getStringArrayList("name_list");
         ArrayList<String> arrModelList = savedInstanceState.getStringArrayList("model_list");
@@ -128,6 +146,7 @@ public class SwitcherDeviceFragment extends StatedFragment implements View.OnCli
             deviceList.setName(arrNameList.get(i));
             deviceList.setModel(arrModelList.get(i));
 
+            resultDeviceLists.add(deviceList);
             deviceLists.add(deviceList);
         }
         setViewVisibility();
@@ -154,7 +173,6 @@ public class SwitcherDeviceFragment extends StatedFragment implements View.OnCli
         BusProvider.getInstance().register(this);
         BusProvider.getNetworkInstance().register(this);
     }
-
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -167,10 +185,13 @@ public class SwitcherDeviceFragment extends StatedFragment implements View.OnCli
         if(DeviceQueryEvent.RESULT_SUCCESS.equals(event.getResult()) &&
                 DeviceQueryEvent.EVENT_NAME.equals(event.getEvent())) {
             status = Status.STATUS_SUCCESS;
-            updateDeviceList(event.getDeviceList());
+            isContentReady = true;
+            deviceLists = event.getDeviceList();
+            updateDeviceList(deviceLists);
         } else if(DeviceQueryEvent.RESULT_FAILURE.equals(event.getResult()) &&
                 DeviceQueryEvent.EVENT_NAME.equals(event.getEvent())) {
             status = Status.STATUS_ERROR;
+            isContentReady = true;
             notifyFailure(event.getMessage());
         }
     }
@@ -187,6 +208,22 @@ public class SwitcherDeviceFragment extends StatedFragment implements View.OnCli
         }
     }
 
+    @Subscribe
+    public void onBackPressed(BackPressedOptionsMenuEvent event) {
+        collapseOptionsMenu();
+    }
+
+    @Subscribe
+    public void onNextPage(DeviceSwitcherNext event) {
+        if(event.getPage() == SwitcherFragment.PAGE_SWITCHER_DEVICE) {
+            isContentReady = false;
+            arrStringDeviceList.clear();
+            arrStringModelList.clear();
+            switcherDeviceAdapter.notifyDataSetChanged();
+            rvDevice.setRefreshing(true);
+        }
+    }
+
     private void getDeviceList() {
         tvChooserDevice.setText("Choose " + brand + " devices");
         showPullProgress();
@@ -194,7 +231,7 @@ public class SwitcherDeviceFragment extends StatedFragment implements View.OnCli
     }
 
     private void updateDeviceList(ArrayList<DeviceList> arrDevice) {
-        deviceLists = arrDevice;
+        resultDeviceLists = arrDevice;
         initialDevice();
     }
 
@@ -218,15 +255,20 @@ public class SwitcherDeviceFragment extends StatedFragment implements View.OnCli
 
     private void initialDevice() {
         ArrayList<String> strDeviceLists = new ArrayList<>();
-        for(int i = 0 ; i < deviceLists.size() ; i++) {
-            DeviceList deviceList = deviceLists.get(i);
-            strDeviceLists.add(deviceList.getName() + " " + deviceList.getModel());
+        ArrayList<String> strModelLists = new ArrayList<>();
+        for (int i = 0; i < resultDeviceLists.size(); i++) {
+            DeviceList deviceList = resultDeviceLists.get(i);
+            strDeviceLists.add(deviceList.getName());
+            strModelLists.add(deviceList.getModel());
         }
-        arrDeviceList.clear();
-        arrDeviceList.addAll(strDeviceLists);
+        arrStringDeviceList.clear();
+        arrStringDeviceList.addAll(strDeviceLists);
+        arrStringModelList.clear();
+        arrStringModelList.addAll(strModelLists);
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                rvDevice.setVisibility(View.VISIBLE);
                 AnimateUtils.fadeOutAnimate(layoutPullDown);
                 //switcherDeviceAdapter.notifyItemRangeInserted(0, arrDeviceList.size());
                 switcherDeviceAdapter.notifyDataSetChanged();
@@ -237,7 +279,6 @@ public class SwitcherDeviceFragment extends StatedFragment implements View.OnCli
     private void showPullProgress() {
         rvDevice.setRefreshing(true);
     }
-
 
     private void setViewVisibility() {
         switch (status) {
@@ -253,4 +294,62 @@ public class SwitcherDeviceFragment extends StatedFragment implements View.OnCli
         }
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_search_bar, menu);
+        searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setQueryHint(getResources().getString(R.string.search));
+        searchView.setIconifiedByDefault(false);
+        searchView.setSubmitButtonEnabled(false);
+        searchView.setOnQueryTextListener(this);
+        MenuItemCompat.setOnActionExpandListener(searchItem, this);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    public void collapseOptionsMenu() {
+        if(searchItem != null)
+            MenuItemCompat.collapseActionView(searchItem);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        if(isContentReady) {
+            if (deviceLists != null && deviceLists.size() > 0) {
+                ArrayList<DeviceList> arrayDeviceList = new ArrayList<>();
+                for (int i = 0; i < deviceLists.size(); i++) {
+                    if (deviceLists.get(i).getName().toLowerCase(Locale.getDefault()).contains(s.toLowerCase(Locale.getDefault()))
+                            || deviceLists.get(i).getModel().toLowerCase(Locale.getDefault()).contains(s.toLowerCase(Locale.getDefault()))) {
+                        arrayDeviceList.add(deviceLists.get(i));
+                    }
+                }
+                initialDevice();
+                updateDeviceList(arrayDeviceList);
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onMenuItemActionExpand(MenuItem item) {
+        // Do something when collapsed
+        //layoutSearchOverlay.setVisibility(View.GONE);
+        isSearchBarExpanded = true;
+        BusProvider.getInstance().post(new SearchBarEvent(isSearchBarExpanded));
+        return true;
+    }
+
+    @Override
+    public boolean onMenuItemActionCollapse(MenuItem item) {
+        // Do something when expanded
+        //layoutSearchOverlay.setVisibility(View.VISIBLE);
+        isSearchBarExpanded = false;
+        BusProvider.getInstance().post(new SearchBarEvent(isSearchBarExpanded));
+        return true;
+    }
 }

@@ -25,10 +25,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import app.akeorcist.deviceinformation.R;
 import app.akeorcist.deviceinformation.activity.MainActivity;
 import app.akeorcist.deviceinformation.adapter.NavigatorDrawerAdapter;
+import app.akeorcist.deviceinformation.constants.Page;
 import app.akeorcist.deviceinformation.constants.URL;
 import app.akeorcist.deviceinformation.event.DeviceNameDownloadEvent;
 import app.akeorcist.deviceinformation.event.ViewEvent;
@@ -41,6 +43,8 @@ import app.akeorcist.deviceinformation.utility.DevicePreferences;
  * design guidelines</a> for a complete explanation of the behaviors implemented here.
  */
 public class NavigationDrawerFragment extends Fragment {
+
+
 
     /**
      * Remember the position of the selected item.
@@ -397,7 +401,10 @@ public class NavigationDrawerFragment extends Fragment {
     }
 
     private void downloadDeviceImage(String url) {
-        Glide.with(getActivity()).load(url).into(ivDevice);
+        Glide.with(this)
+                .load(url)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(ivDevice);
     }
 
     public void setYourDevice(boolean isYourDevice) {
@@ -417,27 +424,27 @@ public class NavigationDrawerFragment extends Fragment {
 
     public void setNavigatorDrawerMenu(boolean isYourDevice) {
         if(isYourDevice) {
-            mDrawerAdapter.hideMenu(0);
-            mDrawerAdapter.showMenu(1);
-            mDrawerAdapter.showMenu(2);
-            mDrawerAdapter.showMenu(3);
-            mDrawerAdapter.showMenu(4);
-            mDrawerAdapter.showMenu(5);
-            mDrawerAdapter.showMenu(6);
-            mDrawerAdapter.showMenu(7);
-            mDrawerAdapter.showMenu(8);
-            mDrawerAdapter.showMenu(9);
+            mDrawerAdapter.hideMenu(Page.BACK_YOUR_DEVICE);
+            mDrawerAdapter.showMenu(Page.SUBMIT);
+            mDrawerAdapter.showMenu(Page.CHANGE_DEVICE);
+            mDrawerAdapter.showMenu(Page.HARDWARE);
+            mDrawerAdapter.showMenu(Page.SENSOR);
+            mDrawerAdapter.showMenu(Page.SCREEN);
+            mDrawerAdapter.showMenu(Page.CAMERA);
+            mDrawerAdapter.showMenu(Page.CAMERA2);
+            mDrawerAdapter.showMenu(Page.FEATURE);
+            mDrawerAdapter.showMenu(Page.APP_LIST);
         } else {
-            mDrawerAdapter.showMenu(0);
-            mDrawerAdapter.hideMenu(1);
-            mDrawerAdapter.showMenu(2);
-            mDrawerAdapter.showMenu(3);
-            mDrawerAdapter.showMenu(4);
-            mDrawerAdapter.showMenu(5);
-            mDrawerAdapter.showMenu(6);
-            mDrawerAdapter.showMenu(7);
-            mDrawerAdapter.showMenu(8);
-            mDrawerAdapter.hideMenu(9);
+            mDrawerAdapter.showMenu(Page.BACK_YOUR_DEVICE);
+            mDrawerAdapter.hideMenu(Page.SUBMIT);
+            mDrawerAdapter.showMenu(Page.CHANGE_DEVICE);
+            mDrawerAdapter.showMenu(Page.HARDWARE);
+            mDrawerAdapter.showMenu(Page.SENSOR);
+            mDrawerAdapter.showMenu(Page.SCREEN);
+            mDrawerAdapter.showMenu(Page.CAMERA);
+            mDrawerAdapter.showMenu(Page.CAMERA2);
+            mDrawerAdapter.showMenu(Page.FEATURE);
+            mDrawerAdapter.hideMenu(Page.APP_LIST);
         }
         mDrawerAdapter.notifyDataSetChanged();
     }

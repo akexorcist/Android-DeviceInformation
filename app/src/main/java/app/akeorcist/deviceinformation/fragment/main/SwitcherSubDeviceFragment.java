@@ -25,6 +25,7 @@ import app.akeorcist.deviceinformation.constants.Status;
 import app.akeorcist.deviceinformation.event.ChooseDeviceEvent;
 import app.akeorcist.deviceinformation.event.ChooseDeviceNameEvent;
 import app.akeorcist.deviceinformation.event.DeviceQueryEvent;
+import app.akeorcist.deviceinformation.event.DeviceSwitcherNext;
 import app.akeorcist.deviceinformation.event.PagerControlEvent;
 import app.akeorcist.deviceinformation.event.ViewEvent;
 import app.akeorcist.deviceinformation.model.SubDevice;
@@ -77,6 +78,7 @@ public class SwitcherSubDeviceFragment extends StatedFragment implements View.On
                 String fingerprint = arrDeviceList.get(position).getFingerprint();
                 BusProvider.getInstance().post(new PagerControlEvent(PagerControlEvent.MOVE_NEXT));
                 BusProvider.getInstance().post(new ChooseDeviceEvent(brand, name, model, version, fingerprint));
+                BusProvider.getInstance().post(new DeviceSwitcherNext(SwitcherFragment.PAGE_SWITCHER_CONFIRM));
             }
         });
 
@@ -193,6 +195,15 @@ public class SwitcherSubDeviceFragment extends StatedFragment implements View.On
             rvSubDevice.setRefreshing(true);
         } else {
             layoutPullDown.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Subscribe
+    public void onNextPage(DeviceSwitcherNext event) {
+        if(event.getPage() == SwitcherFragment.PAGE_SWITCHER_SUB_DEVICE) {
+            arrDeviceList.clear();
+            switcherSubDeviceAdapter.notifyDataSetChanged();
+            rvSubDevice.setRefreshing(true);
         }
     }
 

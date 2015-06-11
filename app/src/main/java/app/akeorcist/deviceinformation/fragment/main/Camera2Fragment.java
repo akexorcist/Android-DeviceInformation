@@ -2,9 +2,10 @@ package app.akeorcist.deviceinformation.fragment.main;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -16,17 +17,12 @@ import com.squareup.otto.Subscribe;
 
 import app.akeorcist.deviceinformation.R;
 import app.akeorcist.deviceinformation.adapter.Camera2PagerAdapter;
-import app.akeorcist.deviceinformation.adapter.CameraPagerAdapter;
-import app.akeorcist.deviceinformation.data.device.Camera2Manager;
 import app.akeorcist.deviceinformation.data.device.DataManager;
 import app.akeorcist.deviceinformation.event.ViewEvent;
 import app.akeorcist.deviceinformation.provider.BusProvider;
 import app.akeorcist.deviceinformation.utility.AnimateUtils;
 
 public class Camera2Fragment extends StatedFragment {
-
-    private Activity activity;
-
     private ProgressWheel progressWheel;
     private LinearLayout layoutContent;
     private ViewPager vpContent;
@@ -34,8 +30,7 @@ public class Camera2Fragment extends StatedFragment {
     private int cameraCount;
 
 	public static Camera2Fragment newInstance() {
-		Camera2Fragment fragment = new Camera2Fragment();
-		return fragment;
+		return new Camera2Fragment();
 	}
 
 	public Camera2Fragment() { }
@@ -59,6 +54,7 @@ public class Camera2Fragment extends StatedFragment {
             progressWheel.setVisibility(View.VISIBLE);
         }
 
+        setHasOptionsMenu(true);
 		return rootView;
 	}
 
@@ -78,7 +74,6 @@ public class Camera2Fragment extends StatedFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activity = getActivity();
         BusProvider.getInstance().register(this);
     }
 
@@ -104,7 +99,7 @@ public class Camera2Fragment extends StatedFragment {
         Camera2PagerAdapter adapter = new Camera2PagerAdapter(getActivity(), getChildFragmentManager(), strTitle);
         if(vpContent != null)
             vpContent.setAdapter(adapter);
-        if(pagerTab != null)
+        if(pagerTab != null && vpContent != null)
             pagerTab.setViewPager(vpContent);
     }
 
@@ -115,5 +110,10 @@ public class Camera2Fragment extends StatedFragment {
                 AnimateUtils.fadeInAnimateWithZero(layoutContent);
             }
         });
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

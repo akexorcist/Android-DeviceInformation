@@ -14,10 +14,12 @@ import app.akeorcist.deviceinformation.R;
 public class SwitcherDeviceHolder extends RecyclerView.ViewHolder {
     public LinearLayout layoutDevice;
     public TextView tvDeviceName;
+    public TextView tvDeviceModel;
 
     public SwitcherDeviceHolder(View view) {
         super(view);
         layoutDevice = (LinearLayout) view.findViewById(R.id.layout_device);
         tvDeviceName = (TextView) view.findViewById(R.id.tv_device_name);
+        tvDeviceModel = (TextView) view.findViewById(R.id.tv_device_model);
     }
 }

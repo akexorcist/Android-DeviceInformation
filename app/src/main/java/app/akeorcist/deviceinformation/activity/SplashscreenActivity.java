@@ -61,9 +61,10 @@ public class SplashscreenActivity extends ActionBarActivity {
     }
 
     private void initialParse() {
+
+        Parse.initialize(this, Key.PARSE_APP_ID, Key.PARSE_CLIENT_ID);
         if(ParseCrashReporting.isCrashReportingEnabled()) {
             ParseCrashReporting.enable(this);
-            Parse.initialize(this, Key.PARSE_APP_ID, Key.PARSE_CLIENT_ID);
         }
     }
 

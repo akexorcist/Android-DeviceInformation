@@ -1,7 +1,9 @@
 package app.akeorcist.deviceinformation.network;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -22,15 +24,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Locale;
 
 import app.akeorcist.deviceinformation.constants.ErrorMessage;
 import app.akeorcist.deviceinformation.constants.URL;
+import app.akeorcist.deviceinformation.data.device.hardware.ExternalStorageManager;
+import app.akeorcist.deviceinformation.data.device.hardware.StorageManager;
 import app.akeorcist.deviceinformation.data.file.FileManager;
 import app.akeorcist.deviceinformation.event.DeviceNameResultEvent;
 import app.akeorcist.deviceinformation.event.DeviceQueryEvent;
 import app.akeorcist.deviceinformation.event.DeviceSwitchEvent;
 import app.akeorcist.deviceinformation.event.SubmitEvent;
 import app.akeorcist.deviceinformation.model.DeviceList;
+import app.akeorcist.deviceinformation.model.SimpleData;
 import app.akeorcist.deviceinformation.model.SubDevice;
 import app.akeorcist.deviceinformation.provider.BusProvider;
 import app.akeorcist.deviceinformation.utility.StringUtils;
@@ -88,6 +95,30 @@ public class NetworkManager {
             }
         });
     }*/
+
+
+    // TODO Collect Storage Path
+    public static void sendSD(final Context context) {
+
+        String str = "";
+        HashSet<String> externalLocations = ExternalStorageManager.getStorageSet();
+        for(int i = 0 ; i < externalLocations.size() ; i++) {
+            Object[] myArr = externalLocations.toArray();
+            String path = myArr[0].toString().toLowerCase(Locale.getDefault());
+            str += path + "\n";
+        }
+
+        ParseObject parseObject = new ParseObject("SD");
+        parseObject.put("brand", Build.BRAND);
+        parseObject.put("model", Build.MODEL);
+        parseObject.put("sd", str);
+        parseObject.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                Toast.makeText(context, "Finish", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     public void checkDeviceExist(String brand, String model, String version, String fingerprint) {
         String url = URL.URL_CHECK_EXIST;

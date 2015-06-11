@@ -1,13 +1,10 @@
 package app.akeorcist.deviceinformation.fragment.main;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.inthecheesefactory.thecheeselibrary.fragment.support.v4.app.StatedFragment;
 import com.pnikosis.materialishprogress.ProgressWheel;
@@ -15,13 +12,22 @@ import com.squareup.otto.Subscribe;
 
 import app.akeorcist.deviceinformation.R;
 import app.akeorcist.deviceinformation.adapter.SwitcherPagerAdapter;
+import app.akeorcist.deviceinformation.event.BackPressedDeviceSwitcherEvent;
+import app.akeorcist.deviceinformation.event.BackPressedEvent;
+import app.akeorcist.deviceinformation.event.DeviceSwitcherBackable;
+import app.akeorcist.deviceinformation.event.DeviceSwitcherNext;
 import app.akeorcist.deviceinformation.event.PagerControlEvent;
 import app.akeorcist.deviceinformation.event.ViewEvent;
 import app.akeorcist.deviceinformation.provider.BusProvider;
 import app.akeorcist.deviceinformation.utility.AnimateUtils;
 import app.akeorcist.deviceinformation.view.NonSwipeableViewPager;
 
-public class SwitcherFragment extends StatedFragment {
+public class SwitcherFragment extends StatedFragment implements ViewPager.OnPageChangeListener {
+    public static final int PAGE_SWITCHER_BRAND = 0;
+    public static final int PAGE_SWITCHER_DEVICE = 1;
+    public static final int PAGE_SWITCHER_SUB_DEVICE = 2;
+    public static final int PAGE_SWITCHER_CONFIRM = 3;
+
     private ProgressWheel progressWheel;
     private NonSwipeableViewPager vpChooser;
 
@@ -37,11 +43,12 @@ public class SwitcherFragment extends StatedFragment {
 
         progressWheel = (ProgressWheel) rootView.findViewById(R.id.progress_wheel);
         vpChooser = (NonSwipeableViewPager) rootView.findViewById(R.id.vp_chooser);
+        vpChooser.setOffscreenPageLimit(4);
+        vpChooser.addOnPageChangeListener(this);
 
         if(savedInstanceState == null) {
             progressWheel.setVisibility(View.VISIBLE);
             vpChooser.setVisibility(View.GONE);
-            vpChooser.setOffscreenPageLimit(4);
             initialView();
         }
 
@@ -75,12 +82,22 @@ public class SwitcherFragment extends StatedFragment {
 
     @Subscribe
     public void changePage(PagerControlEvent event) {
-        if(PagerControlEvent.MOVE_PREV.equals(event.getCommand()))
+        if(PagerControlEvent.MOVE_PREV.equals(event.getCommand())) {
             vpChooser.setCurrentItem(vpChooser.getCurrentItem() - 1);
-        else if(PagerControlEvent.MOVE_NEXT.equals(event.getCommand()))
+        } else if(PagerControlEvent.MOVE_NEXT.equals(event.getCommand())) {
             vpChooser.setCurrentItem(vpChooser.getCurrentItem() + 1);
-        else if(PagerControlEvent.MOVE_POSITION.equals(event.getCommand()))
+        } else if(PagerControlEvent.MOVE_POSITION.equals(event.getCommand())) {
             vpChooser.setCurrentItem(event.getPage());
+        }
+    }
+
+    @Subscribe
+    public void onBackPressedOnDeviceSwitcher(BackPressedDeviceSwitcherEvent event) {
+        if(vpChooser.getCurrentItem() > PAGE_SWITCHER_BRAND) {
+            changePage(new PagerControlEvent(PagerControlEvent.MOVE_PREV));
+        } else {
+            BusProvider.getInstance().post(new BackPressedEvent());
+        }
     }
 
     @Subscribe
@@ -103,4 +120,19 @@ public class SwitcherFragment extends StatedFragment {
         SwitcherPagerAdapter adapter = new SwitcherPagerAdapter(getChildFragmentManager());
         vpChooser.setAdapter(adapter);
     }
+
+    @Override
+    public void onPageSelected(int position) {
+        if(position == PAGE_SWITCHER_BRAND) {
+            BusProvider.getInstance().post(new DeviceSwitcherBackable(false));
+        } else {
+            BusProvider.getInstance().post(new DeviceSwitcherBackable(true));
+        }
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }
+
+    @Override
+    public void onPageScrollStateChanged(int state) { }
 }

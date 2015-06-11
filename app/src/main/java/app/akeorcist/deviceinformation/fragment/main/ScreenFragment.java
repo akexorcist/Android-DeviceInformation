@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -24,7 +26,6 @@ import app.akeorcist.deviceinformation.provider.BusProvider;
 import app.akeorcist.deviceinformation.utility.AnimateUtils;
 import app.akeorcist.deviceinformation.activity.ScreenMeasureActivity;
 import app.akeorcist.deviceinformation.model.ScreenData;
-import app.akeorcist.deviceinformation.utility.AppPreferences;
 import app.akeorcist.deviceinformation.utility.DevicePreferences;
 
 public class ScreenFragment extends StatedFragment {
@@ -80,6 +81,7 @@ public class ScreenFragment extends StatedFragment {
             setMeasureScreen();
         }
 
+        setHasOptionsMenu(true);
 		return rootView;
 	}
 
@@ -140,5 +142,10 @@ public class ScreenFragment extends StatedFragment {
         } else {
             cvScreenMeasure.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

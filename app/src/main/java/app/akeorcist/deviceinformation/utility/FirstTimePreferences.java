@@ -15,6 +15,7 @@ public class FirstTimePreferences {
     private final static String KEY_FIRST_PAGE = "first_page";
     private final static String KEY_DEVICE_LIST = "device_list";
     private final static String KEY_SUB_DEVICE_LIST = "sub_device_list";
+    private final static String KEY_SENT_SD_INFO = "sent_sd_info";
 
     private static void setFirstTimePreference(Context context, String key, boolean value) {
         SharedPreferences.Editor editor =  getFirstTimePreference(context).edit();
@@ -44,6 +45,10 @@ public class FirstTimePreferences {
 
     public static boolean isSubDeviceList(Context context) {
         return getFirstTime(context, KEY_SUB_DEVICE_LIST);
+    }
+
+    public static boolean hasSentSDInfo(Context context) {
+        return getFirstTime(context, KEY_SENT_SD_INFO);
     }
 
     private static boolean getFirstTime(Context context, String key) {

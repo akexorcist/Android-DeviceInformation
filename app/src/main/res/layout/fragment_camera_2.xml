@@ -531,7 +531,7 @@
                             <TextView
                                 android:layout_width="@dimen/camera_card_title_width"
                                 android:layout_height="wrap_content"
-                                android:text="@string/camera2_available_jpeg_thumbnail_size"
+                                android:text="@string/camera2_available_max_digital_zoom"
                                 android:textColor="@color/dark_gray"
                                 android:textSize="@dimen/global_text_size_small"
                                 android:textStyle="bold" />

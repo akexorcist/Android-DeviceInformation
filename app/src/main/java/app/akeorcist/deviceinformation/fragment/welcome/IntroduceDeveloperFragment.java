@@ -17,8 +17,7 @@ import app.akeorcist.deviceinformation.provider.BusProvider;
 public class IntroduceDeveloperFragment extends Fragment {
 
     public static IntroduceDeveloperFragment newInstance() {
-        IntroduceDeveloperFragment fragment = new IntroduceDeveloperFragment();
-        return fragment;
+        return new IntroduceDeveloperFragment();
     }
 
     public IntroduceDeveloperFragment() { }
@@ -29,21 +28,32 @@ public class IntroduceDeveloperFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_welcome_developer, null);
-        Button buttonOk = (Button) rootView.findViewById(R.id.button_ok);
-        buttonOk.setOnClickListener(new View.OnClickListener() {
+        Button buttonNext = (Button) rootView.findViewById(R.id.button_next);
+        buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BusProvider.getInstance().post(ok());
+                BusProvider.getInstance().post(next());
+            }
+        });
+        Button buttonSkip = (Button) rootView.findViewById(R.id.button_skip);
+        buttonSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BusProvider.getInstance().post(skip());
             }
         });
         return rootView;
     }
 
     @Produce
-    public WelcomeEvent ok() {
+    public WelcomeEvent next() {
+        return new WelcomeEvent(WelcomeEvent.EVENT_NEXT);
+    }
+
+    @Produce
+    public WelcomeEvent skip() {
         return new WelcomeEvent(WelcomeEvent.EVENT_SKIP);
     }
 }

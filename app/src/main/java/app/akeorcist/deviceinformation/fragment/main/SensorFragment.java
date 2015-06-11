@@ -1,11 +1,11 @@
 package app.akeorcist.deviceinformation.fragment.main;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -14,14 +14,12 @@ import com.pnikosis.materialishprogress.ProgressWheel;
 import com.squareup.otto.Subscribe;
 
 import app.akeorcist.deviceinformation.R;
-import app.akeorcist.deviceinformation.adapter.HardwearCardAdapter;
 import app.akeorcist.deviceinformation.adapter.SensorCardAdapter;
 import app.akeorcist.deviceinformation.event.ViewEvent;
 import app.akeorcist.deviceinformation.provider.BusProvider;
 import app.akeorcist.deviceinformation.utility.AnimateUtils;
 
 public class SensorFragment extends StatedFragment {
-    private Activity activity;
     private RecyclerView rvSensorCard;
     private ProgressWheel progressWheel;
 
@@ -68,7 +66,6 @@ public class SensorFragment extends StatedFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activity = getActivity();
         BusProvider.getInstance().register(this);
     }
 
@@ -100,5 +97,10 @@ public class SensorFragment extends StatedFragment {
                 AnimateUtils.fadeInAnimateWithZero(rvSensorCard);
             }
         });
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

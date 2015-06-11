@@ -2,6 +2,9 @@
 <resources>
 
     <string name="app_name">Dev Device Info</string>
+    <string name="app_full_name">Developer Device Information</string>
+
+    <string name="welcome_to">Welcome to</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -10,15 +13,26 @@
     <string name="ok">OK</string>
     <string name="next">Next</string>
     <string name="skip">Skip</string>
-    <string name="loading">Loading...</string>
+    <string name="loading">Loading…</string>
     <string name="send">SEND</string>
+    <string name="search">Search</string>
 
     <string name="welcome_if_you_are">If you are</string>
     <string name="welcome_developer">Developer</string>
     <string name="welcome_user">User</string>
-    <string name="welcome_for_user">This app is used for collect information of android devices for application development. You can help us by send your device information via this app. The collected device information is for development only. We promise we will not retain your private information.</string>
     <string name="welcome_for_dev">This app will help you to collect android devices information for application development. We have information of real android devices, such as camera parameter, screen, sensor. You can get all android device information on our server to show on this app. And we have open source code of this app on GitHub. We hope this app will help you to build a great app. </string>
-    
+    <string name="welcome_for_user">This app is used for collect information of android devices for application development. You can help us by send your device information via this app. The collected device information is for development only. We promise we will not retain your private information.</string>
+    <string name="welcome_description">Description</string>
+    <string name="welcome_description_submit">To send device information to our server. we call \"Submit\". Your device information will store on server and provide to another people. Don\'t worry about your private data and information. We just get and keep only device\'s hardware specification </string>
+    <string name="welcome_description_hardware">Information about hardware and software specification. e.g. android version, 32/64 bit support, battery capacity, cpu information, gpu information, ETC. So you can check your device specification from this menu.</string>
+    <string name="welcome_description_sensor">Android device have many sensor and this menu will be show all sensor and sensor\'s information on your device.</string>
+    <string name="welcome_description_screen">Display screen is main problem for developer. Because it have many difference device with difference screen (We call \"Fragmentation\"). So this information will be show display screen information that developer should know</string>
+    <string name="welcome_description_camera">Camera information is one of fragmentation problem (Maybe more problem than display screen). It have many camera parameter that difference with another device. You don\'t wonder if you found some android app that have a problem about camera device.</string>
+    <string name="welcome_description_camera2">Camera 2 (Camera 2 API) is new API for access camera on device (Android Lollipop or later). This API will allow developer to use camera with better efficiency. It contain with many advance parameters, so developer should know to build a great camera app with this new API.</string>
+    <string name="welcome_description_feature">Feature on android device is depending on hardware and software, so not all feature will be support on some device. This cause why some device can\'t download some application. You can check about feature supported on your device from this menu</string>
+    <string name="welcome_description_applist">Listing all application that installed on your device and show information about package name or permission that us in this app (You can check permission from each application). But we just show application information in this app only . We didn\'t send to our server. So don\'t worry about it.</string>
+    <string name="welcome_description_switcher">How you can see these information? on website? Absolutely not, you can see all device information on our server directly in this app. This menu will show the list of device for choosing. When choose any device. That device information will download to this device and show instead of your device.</string>
+
     <string name="menu_choose">Choose Information</string>
     <string name="menu_back_your_device">Back To Your Device</string>
     <string name="menu_change_device">Device Switcher</string>
@@ -35,7 +49,7 @@
     <string name="menu_your_device">(Your Device)</string>
     <string name="menu_other_device">(Other Device)</string>
     <string name="menu_unknown_device">Unknown</string>
-    
+
     <string name="camera_camera_id">Camera ID</string>
     <string name="camera_antibanding">Antibanding</string>
     <string name="camera_shutter_sound">Can Disable Shutter Sound</string>
@@ -83,6 +97,7 @@
     <string name="camera2_available_hot_pixel_map_mode">Available Hot Pixel Map Mode</string>
     <string name="camera2_available_hot_pixel_mode">Available Hot Pixel Mode</string>
     <string name="camera2_available_jpeg_thumbnail_size">Available JPEG Thumbnail Size</string>
+    <string name="camera2_available_max_digital_zoom">Available Max Digital Zoom</string>
     <string name="camera2_available_noise_reduction_mode">Available Noise Reduction Mode</string>
     <string name="camera2_available_optical_stabilization">Available Optical Stabilization</string>
     <string name="camera2_available_request_capability">Available Request Capability</string>
@@ -123,7 +138,7 @@
     <string name="camera2_timestamp_source">Timestamp Source</string>
     <string name="camera2_tone_map_max_curve_point">Tone Map Max Curve Point</string>
     <string name="camera2_white_level">White Level</string>
-    
+
     <string name="sensor_vendor">Vendor</string>
     <string name="sensor_type">Type</string>
     <string name="sensor_version">Version</string>
@@ -134,7 +149,7 @@
     <string name="sensor_max_delay">Max Delay</string>
     <string name="sensor_fifo_reserved">FIFO Reserved Event</string>
     <string name="sensor_fifo_max">FIFO Max Event</string>
-    
+
     <string name="screen_resolution">Resolution (PX)</string>
     <string name="screen_resolution_dp">Resolution (DP)</string>
     <string name="screen_dpi_x">DPI (X)</string>
@@ -144,7 +159,7 @@
     <string name="screen_density">Density</string>
     <string name="screen_multitouch">Multitouch</string>
     <string name="screen_screen_measurement">Screen Measurement</string>
-    
+
     <string name="screen_1280">1280 dp</string>
     <string name="screen_1232">1232 dp</string>
     <string name="screen_1024">1024 dp</string>

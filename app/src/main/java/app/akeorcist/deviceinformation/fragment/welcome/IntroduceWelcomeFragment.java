@@ -17,8 +17,7 @@ import app.akeorcist.deviceinformation.provider.BusProvider;
 public class IntroduceWelcomeFragment extends Fragment {
 
     public static IntroduceWelcomeFragment newInstance() {
-        IntroduceWelcomeFragment fragment = new IntroduceWelcomeFragment();
-        return fragment;
+        return new IntroduceWelcomeFragment();
     }
 
     public IntroduceWelcomeFragment() { }
@@ -29,8 +28,7 @@ public class IntroduceWelcomeFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_welcome_introduce, null);
         Button buttonNext = (Button) rootView.findViewById(R.id.button_next);
         buttonNext.setOnClickListener(new View.OnClickListener() {

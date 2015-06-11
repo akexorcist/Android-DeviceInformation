@@ -8,12 +8,6 @@
     android:orientation="horizontal">
 
     <ImageView
-        android:layout_width="@dimen/switcher_brand_loading_size"
-        android:layout_height="@dimen/switcher_brand_loading_size"
-        android:src="@drawable/ic_loading"
-        android:layout_centerInParent="true" />
-
-    <ImageView
         android:id="@+id/iv_brand_icon"
         android:layout_width="match_parent"
         android:layout_height="@dimen/switcher_brand_height"

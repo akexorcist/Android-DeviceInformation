@@ -28,15 +28,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Welcome to"
+                    android:text="@string/welcome_to"
                     android:textColor="@color/dark_gray"
                     android:textSize="@dimen/welcome_text_header_size" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Developer Device Information"
-                    android:textColor="@color/dark_gray"
+                    android:text="@string/app_full_name"
+                    android:textColor="@color/red"
                     android:textSize="@dimen/welcome_text_app_name_size" />
 
             </LinearLayout>

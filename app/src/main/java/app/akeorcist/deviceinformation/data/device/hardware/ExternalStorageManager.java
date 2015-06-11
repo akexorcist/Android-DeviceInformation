@@ -15,7 +15,6 @@ import java.util.regex.Pattern;
  */
 public class ExternalStorageManager {
 
-
     public static HashSet<String> getStorageSet(){
         HashSet<String> storageSet = getStorageSet(new File("/system/etc/vold.fstab"), true);
         storageSet.addAll(getStorageSet(new File("/proc/mounts"), false));

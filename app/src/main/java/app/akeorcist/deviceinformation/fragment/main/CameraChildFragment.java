@@ -1,7 +1,6 @@
 package app.akeorcist.deviceinformation.fragment.main;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,10 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import app.akeorcist.deviceinformation.R;
-import app.akeorcist.deviceinformation.data.device.CameraManager;
 import app.akeorcist.deviceinformation.data.device.DataManager;
 import app.akeorcist.deviceinformation.model.CameraData;
-import app.akeorcist.deviceinformation.parser.FileParser;
 
 public class CameraChildFragment extends Fragment {
     private static final String CAMERA_ID = "camera_id";
