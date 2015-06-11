@@ -67,8 +67,7 @@
                         android:layout_marginTop="@dimen/global_text_size"
                         android:text="@string/welcome_description_hardware"
                         android:textSize="@dimen/global_text_size"
-                        android:textColor="@color/dark_gray"
-                        android:layout_marginLeft="@dimen/global_margin_padding" />
+                        android:textColor="@color/dark_gray" />
 
                 </LinearLayout>
             </ScrollView>
